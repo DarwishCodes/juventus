@@ -333,6 +333,23 @@ html {
 .hide-pop-up {
   display: none; }
 
+.search-bar {
+  margin-left: 7.7%;
+  display: block; }
+  .search-bar__input {
+    background-color: #292929;
+    outline: none;
+    border: 1px solid rgba(250, 213, 176, 0.5);
+    padding: 1rem 3rem;
+    color: #fff;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 1.6rem;
+    transition: all 0.5s; }
+    .search-bar__input:focus {
+      box-shadow: 0rem 0.2rem 2rem rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(250, 213, 176, 0.8); }
+
 .players {
   font-size: 1.2rem;
   font-weight: 400; }
