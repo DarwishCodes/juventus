@@ -1,0 +1,159 @@
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 1rem;
+    height: 8rem;
+    width: 100%;
+    background-color: $color-black-1;
+    box-shadow: 0rem 1rem 3rem rgba($color-dark-1, 0.2);
+    z-index: 2000;
+
+    &__logo {
+        position: fixed;
+        top: 1rem;
+        left: 49%;
+        display: block;
+    }
+
+}
+
+.drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 20rem;
+    transform: translateX(-20rem);
+    height: 100vh;
+    background-color: rgba($color-secondry, 1);
+    transition: all 0.5s;
+    z-index: 1700;
+    box-shadow: 0rem 1rem 1rem rgba($color-secondry-dark, 0.9);
+
+
+    &__content {
+        text-align: left;
+
+    }
+
+    &__icon-box {
+        font-size: 2.3rem;
+        margin-left: 4rem;
+        position: relative;
+        text-align: center;
+        cursor: pointer;
+        
+
+        &:hover .drawer__icon-background::after {
+
+            transform: scale(1.4);
+            opacity: 1;
+            border-radius: 0;
+
+        }
+
+
+    }
+
+    &__icon-background {
+        border-radius: 1px;
+        height: 2.9rem;
+        width: 2.9rem;
+        position: absolute;
+        top: 3rem;
+        left: 0;
+        transform: translate(-50%,-50%);
+        transition: all 0.5s;
+        animation-fill-mode: backwards;
+        padding: 0.1rem;
+        
+
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            background-color: rgba($color-secondry, 0.9);
+            opacity: 0;
+            transform: scale(1.2);
+            border-radius: 25px;
+            height: 2.9rem;
+            width: 2.9rem;
+            z-index: 1;
+            transition: all 0.5s;
+
+        }
+        
+    }
+
+    &__icon {
+        position: absolute;
+        transform: translate(-50%,-50%);
+        top: 50%;
+        left: 50%;
+        z-index: 2;
+
+    }
+
+    &__link-icon {
+        margin-right: 15px;
+    }
+
+    &__logo-box {
+        text-align: center;
+        margin-top: 2rem;
+
+    }
+
+    &__logo {
+        transform: translateY(-8.1rem)
+        
+    }
+
+}
+
+.navigation {
+
+    margin-top: 5rem;
+
+    &__list {
+        
+        font-size: 1.6rem;
+        letter-spacing: 0.1;
+        font-weight: $font-weight-regular;
+        font-family: inherit;
+        
+
+    }
+
+    &__link {
+        display: inline-block;
+        padding: 2.5rem 2rem;
+        border-bottom: 0.5px solid rgba($color-secondry-dark, 0.4);
+        border-top: 0.5px solid rgba($color-secondry-dark, 0.4);
+        text-decoration: none;
+        width: 100%;
+        color: $color-white;
+        background-color: rgba($color-secondry, 1);
+        transition: all 0.5s;
+
+        &:hover {
+
+            background-color: rgba($color-white, .59);
+            color: $color-secondry;
+
+        }
+
+        &:active {
+            background-color: rgba($color-white, .59);
+            color: $color-secondry;
+        }
+
+    }
+    
+    &__link--marked {
+        background-color: rgba($color-white, .59);
+        color: $color-secondry;
+    }
+}

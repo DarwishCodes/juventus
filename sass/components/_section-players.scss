@@ -1,0 +1,78 @@
+.players {
+    font-size: 1.2rem;
+    font-weight: $font-weight-regular;
+    
+
+    &__row {
+        background-color: rgba($color-black-1, 0.5);
+        //deafult 114rem
+
+    }
+
+    &__box {
+        display: inline-block;
+        // TWEAK RESPONSIVE
+        margin-left: 21%;
+        margin-right: 17%;
+
+
+        &:hover .players__card:not(:hover) {
+            filter: blur(2px) saturate(0);
+
+        }
+
+    }
+
+    &__card {
+        position: relative;
+        float: left;
+        border-radius: 23%;
+        width: 17rem;
+        margin-left: 1rem;
+        background-image: linear-gradient(to top, rgba($color-primary, 0.7), rgba($color-primary,0.3), rgba(0,0,1,0), rgba(0,0,1,0));
+        background-repeat: no-repeat;
+        overflow: hidden;
+        border: 1px solid transparent;
+        transition: all 0.5s ease-out;
+        backface-visibility: hidden;
+        
+
+        &:hover {
+            width: 30rem;
+            cursor: pointer;
+        }
+
+        &:hover .players__img {
+            transform: translateY(2px) scale(1.2);
+        }
+
+        &:hover .players__caption {
+            opacity: 1;
+            left: 50%;
+        }
+
+    }
+
+    &__caption {
+        color: $color-primary;
+        font-size: 1.5rem;
+        position: absolute;
+        top: 20%;
+        left: 40%;
+        opacity: 0;
+        transition: all 1s;
+    }
+
+    &__img {
+        display: inline-block;
+        width: 15rem;
+        height: auto;
+        margin-right: 1rem;
+        margin-top: 26px;
+        margin-left: 1rem;
+        transform: translateY(2px);
+        transition: all 0.9s cubic-bezier(.1,.47,.39,.83);
+        z-index: 5;
+        transform: translateY(1rem);
+    }
+}

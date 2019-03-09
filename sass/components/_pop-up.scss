@@ -1,0 +1,77 @@
+.pop-up {
+    display: none;
+    opacity: 0;
+    position: fixed;
+    top: 8rem;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba($color-secondry, 1);
+    z-index: 1000;
+    left: 0;
+    overflow: auto;
+    
+    
+    &__heading-box {
+        display: block;
+        cursor: default;
+    }
+
+    &__heading {
+        color: $color-white;
+        background-image: linear-gradient(108deg , rgba($color-primary-light, 0.9) 0%, rgba($color-primary ,0.9) 50%);
+        background-size: 0%;
+        transition: all 0.8s;
+        background-repeat: no-repeat;
+        padding: 2rem 2rem;
+        opacity: 1;
+        display: inline-block;
+        cursor: default;
+
+    }
+
+    &__left {
+        z-index: 100;
+    }
+
+    &__right {
+        position: fixed;
+        bottom: 0;
+        right: 2rem;
+
+    }
+
+    &__img {
+        width: 200%;
+        height: auto;
+        z-index: 100;
+        transform: translateX(10rem);
+        opacity: 0;
+        filter: brightness(0);
+    }
+
+    &__close {
+        position: absolute;
+        top: 1rem;
+        right: 4rem;
+        font-size: 2rem;
+        color: $color-white;
+        cursor: pointer;
+        transition: all 0.3s;
+        z-index: 1000;
+
+        &:hover {
+            color: $color-primary;
+
+        }
+    }
+
+}
+
+.show-pop-up {
+    display: block;
+    opacity: 0;
+}
+
+.hide-pop-up {
+    display: none;
+}

@@ -1,0 +1,16 @@
+
+*,
+*::after,
+*::before {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: $font-family-main, $font-family-second;
+    font-weight: 400;
+    color: $color-primary;
+    font-size: 10px;
+    background-color: $color-black-2;
+}

@@ -1,0 +1,335 @@
+@keyframes zoomIn {
+
+    0% {
+        background-image: linear-gradient(to top, $color-primary, rgba(0,0,1,0), rgba(0,0,1,0));
+    }
+
+    100% {
+        background-image: linear-gradient(to top, $color-primary, $color-primary);
+    }
+
+}
+
+.zoomIn-animate {
+
+    animation: zoomIn 3s ease;
+
+}
+
+@keyframes fadeIn {
+    
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+
+    }
+}
+
+
+@keyframes fillToRight {
+
+    100% {
+        background-size: 100%;
+        color: $color-black-1;
+
+    }
+
+}
+
+@keyframes fadeOut {
+    
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+@keyframes fadeToTop {
+    
+    0% {
+        
+        opacity: 0;
+        transform: translateY(1rem)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fullShadow {
+    0% {
+        
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    50% {
+        
+        opacity: 1;
+        transform: translateX(0rem);
+    }
+
+    75% {
+        opacity: 1;
+        transform: translateX(0rem);
+        filter: brightness(0);
+
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0rem);
+        filter: brightness(1);
+        
+    }
+}
+
+@keyframes swapToRight {
+    0% {
+        transform: translateX(-20rem);
+    }
+
+    100% {
+
+        transform: translateX(0rem);
+    }
+}
+
+@keyframes swapToLeft {
+    0% {
+        
+        transform: translateX(0rem);
+    }
+
+    100% {
+        transform: translateX(-20rem);
+
+        
+    }
+}
+
+@keyframes swapToTop1 {
+    0% {
+        
+        transform: translateY(0rem);
+    }
+
+    100% {
+        transform: translateY(-8.1rem);
+
+        
+    }
+}
+
+@keyframes swapToBottom1 {
+    0% {
+        
+        transform: translateY(-8.1rem);
+    }
+
+    100% {
+        transform: translateY(0rem);
+
+        
+    }
+}
+
+
+
+
+@keyframes swapToTop2 {
+    0% {
+        
+        transform: translateY(0rem);
+    }
+
+    100% {
+        transform: translateY(-8.1rem);
+
+        
+    }
+}
+
+@keyframes swapToBottom2 {
+    0% {
+        
+        transform: translateY(-8.1rem);
+    }
+
+    100% {
+        transform: translateY(0rem);
+
+        
+    }
+}
+
+
+
+
+
+.move-logo-header-top {
+
+    animation: swapToTop1 0.5s ease;
+    animation-fill-mode: forwards;
+
+}
+
+.move-logo-header-bottom {
+
+    animation: swapToBottom1 0.5s ease;
+    animation-fill-mode: forwards;
+
+}
+
+.move-logo-drawer-top {
+
+    animation: swapToTop2 0.5s ease;
+    animation-fill-mode: forwards;
+    
+
+}
+
+.move-logo-drawer-bottom {
+
+    animation: swapToBottom2 0.5s ease;
+    animation-fill-mode: forwards;
+    
+
+}
+
+.move-drawer {
+    animation: swapToRight 0.5s ease;
+    animation-fill-mode: forwards;
+}
+
+.close-drawer {
+    animation: swapToLeft 0.3s ease;
+    animation-fill-mode: forwards;
+}
+
+// USED IN SHOWING THE POPUP WINDOW AND SHADED WINDOW
+
+.fade-in {
+    animation: fadeIn 0.8s ease;
+    animation-fill-mode: forwards;
+}
+
+.fade-in-fast {
+    animation: fadeIn 0.2s ease;
+    animation-fill-mode: forwards;
+}
+
+// POPUP FADE DISAPPEAR
+
+.fade-out {
+
+    animation: fadeOut 0.4s ease;
+    animation-fill-mode: forwards;
+
+}
+
+.fade-out-fast {
+    animation: fadeOut 0.2s ease;
+    animation-fill-mode: forwards;
+}
+
+// FADE TO LEFT IN POPUP PLAYER
+
+.move-to-left {
+
+    animation: moveToLeft 1s ease;
+    animation-fill-mode: forwards;
+
+}
+
+// FILL IN POPUP OF THE PLAYER NAME
+
+.fill-to-right {
+
+    animation: fillToRight 1s ease;
+    animation-fill-mode: forwards;
+    animation-delay: 0.8s;
+
+}
+
+.full-shadow {
+
+    animation: fullShadow 0.8s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+    animation-delay: 1.5s;
+    
+
+}
+
+// FADE INFO BOXS TO TOP
+
+.fade-to-top {
+
+    &-1 {
+        animation: fadeToTop 1s ease;
+        animation-fill-mode: forwards;
+        animation-delay: 0.3s;
+
+    }
+
+    &-2 {
+        animation: fadeToTop 1s ease;
+        animation-fill-mode: forwards;
+        animation-delay: 0.5s;
+
+    }
+
+    &-3 {
+        animation: fadeToTop 1s ease;
+        animation-fill-mode: forwards;
+        animation-delay: 0.8s;
+
+    }
+
+    &-4 {
+        animation: fadeToTop 1s ease;
+        animation-fill-mode: forwards;
+        animation-delay: 1s;
+        
+    }
+
+    &-5 {
+        animation: fadeToTop 1s ease;
+        animation-fill-mode: forwards;
+        animation-delay: 1.2s;
+        
+    }
+
+    &-6 {
+        animation: fadeToTop 1s ease;
+        animation-fill-mode: forwards;
+        animation-delay: 1.3s;
+        
+    }
+
+    &-7 {
+        animation: fadeToTop 1s ease;
+        animation-fill-mode: forwards;
+        animation-delay: 1.5s;
+        
+    }
+
+    &-8 {
+        animation: fadeToTop 1s ease;
+        animation-fill-mode: forwards;
+        animation-delay: 1.8s;
+        
+    }
+
+
+}

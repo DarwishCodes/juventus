@@ -1,0 +1,41 @@
+.infobox {
+    background-color: rgba($color-secondry-light, 0.5);
+    padding: 2rem 3rem;
+    transition: all 0.5s;
+    opacity: 0;
+    cursor: default;
+    backface-visibility: hidden;
+
+    &:not(:last-child) {
+        margin-bottom: 4rem;
+    }
+
+    &__icon {
+        display: block;
+        font-size: 6rem;
+        color: $color-primary-light;
+
+    }
+
+    &__title {
+        display: block;
+        color: $color-primary-light;
+        font-size: 4.8rem;
+        letter-spacing: 0;
+        font-weight: $font-weight-regular;
+
+    }
+
+    &__paragraph {
+        font-size: 1.6rem;
+        font-weight: $font-weight-regular;
+        letter-spacing: 0.5;
+        color: $color-white;
+
+    }
+
+    &:hover {
+        box-shadow: 0rem 1rem 1rem rgba($color-black-1, 0.3);
+        transform: translateY(-2rem) translateX(1rem);
+    }
+}
