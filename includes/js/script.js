@@ -45,7 +45,7 @@ var classDOM = {
 }
 
 
-var PlayerCard = function(playerName, playerDate, palayerAge, playerHeight, playerPosition, playerNumber, playerJoined, playerGoals, playerImage, playerId) {
+var PlayerCard = function(playerName, playerDate, palayerAge, playerHeight, playerPosition, playerNumber, playerJoined, playerGoals, playerImage, playerId, playerIdNo, playerKeywords) {
 
     this.playerName = playerName;
     this.playerDate = playerDate;
@@ -57,6 +57,10 @@ var PlayerCard = function(playerName, playerDate, palayerAge, playerHeight, play
     this.playerGoals = playerGoals;
     this.playerImage = playerImage;
     this.playerId = playerId;
+    this.playerIdNo = playerIdNo;
+
+
+    this.playerKeywords = playerKeywords;
 
     this.changeContent = function() {
 
@@ -79,12 +83,18 @@ var PlayerCard = function(playerName, playerDate, palayerAge, playerHeight, play
 
 var players = {
 
-    dybala: new PlayerCard("Paulo Dybala", "November 15, 1993", "(age 25)", "1.77 m", "Forward", "10", "2015", "16", "img/players-position-2/forwardes/Dybala_360x700.png", "#dybala"),
-    cristiano: new PlayerCard("Cristiano Ronaldo", "February 5, 1985", "(age 34)", "1.87 m", "Forward", "7", "2018", "56", "img/players-position-2/forwardes/RONALDO_360x700.png", "#cristiano"),
-    costa: new PlayerCard("Douglas Costa", "September 14, 1990", "(age 28)", "1.72 m", "Forward", "11", "2018", "1", "img/players-position-2/forwardes/Costa_360x700.png", "#costa")
+    dybala: new PlayerCard("Paulo Dybala", "November 15, 1993", "(age 25)", "1.77 m", "Forward", "10", "2015", "16", "img/players-position-2/forwardes/Dybala_360x700.png", "#dybala", 0, ["dybala", "paulo"]),
+    cristiano: new PlayerCard("Cristiano Ronaldo", "February 5, 1985", "(age 34)", "1.87 m", "Forward", "7", "2018", "56", "img/players-position-2/forwardes/RONALDO_360x700.png", "#cristiano", 1, ["cristiano", "ronaldo"]),
+    costa: new PlayerCard("Douglas Costa", "September 14, 1990", "(age 28)", "1.72 m", "Forward", "11", "2018", "1", "img/players-position-2/forwardes/Costa_360x700.png", "#costa", 2, ["costa", "douglas"])
 
 
 };
+
+
+
+// SEARCH ENGINE KEYWORDS >> VERY IMPORTANT
+
+
 
 var showHideInfoBox = function(value) {
 
@@ -267,6 +277,50 @@ $("document").ready(function () {
         }
 
         prevScroll = window.pageYOffset;
+
+    });
+
+    var value, valueLength, valueLetter, limitName, name, fetchPlayerKeywords;
+
+
+    $(".search-bar__input").on("change keyup paste", function() {
+        
+
+        if( $(".search-bar__input").val() === "") {
+            $(".players__row").css("display", "block");
+
+        } else {
+            $(".players__row").css("display", "none");
+            value = $(".search-bar__input").val();
+
+            valueLength =  value.length;
+            fetchPlayersLength = Object.values(players).length;
+
+            for(var k = 0; k < fetchPlayersLength; k++) {
+                fetchPlayerKeywords = Object.values(players)[k].playerKeywords;
+
+                for(var c = 0; c < fetchPlayerKeywords.length; c++) {
+                    valueLetter = "";
+
+                    name = Object.values(players)[k].playerKeywords[c];
+
+
+                    for(var i = 0; i < valueLength; i++) {
+                        valueLetter = valueLetter +  name.charAt(i);
+                    }
+                    
+                    limitName = value.substr(0, valueLength);
+
+
+                    if (valueLetter === limitName) {
+                        console.log(Object.values(players)[k].playerName);
+
+                        $("#serach-results").text(Object.values(players)[k].playerName)
+                    }
+                }
+            }
+        }
+
 
     });
 
