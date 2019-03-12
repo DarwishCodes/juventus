@@ -74,7 +74,7 @@ var PlayerCard = function(playerName, playerDate, palayerAge, playerHeight, play
         $(infoboxJoined).text(this.playerJoined);
         $(infoboxGoals).text(this.playerGoals);
 
-        showWindow();
+        // showWindow();
 
     };
 
@@ -83,8 +83,8 @@ var PlayerCard = function(playerName, playerDate, palayerAge, playerHeight, play
 
 var players = {
 
-    dybala: new PlayerCard("Paulo Dybala", "November 15, 1993", "(age 25)", "1.77 m", "Forward", "10", "2015", "16", "img/players-position-2/forwardes/Dybala_360x700.png", "#dybala", 0, ["dybala", "paulo"]),
-    cristiano: new PlayerCard("Cristiano Ronaldo", "February 5, 1985", "(age 34)", "1.87 m", "Forward", "7", "2018", "56", "img/players-position-2/forwardes/RONALDO_360x700.png", "#cristiano", 1, ["cristiano", "ronaldo"]),
+    cristiano: new PlayerCard("Cristiano Ronaldo", "February 5, 1985", "(age 34)", "1.87 m", "Forward", "7", "2018", "56", "img/players-position-2/forwardes/RONALDO_360x700.png", "#cristiano", 0, ["cristiano", "ronaldo"]),
+    dybala: new PlayerCard("Paulo Dybala", "November 15, 1993", "(age 25)", "1.77 m", "Forward", "10", "2015", "16", "img/players-position-2/forwardes/Dybala_360x700.png", "#dybala", 1, ["dybala", "paulo"]),
     costa: new PlayerCard("Douglas Costa", "September 14, 1990", "(age 28)", "1.72 m", "Forward", "11", "2018", "1", "img/players-position-2/forwardes/Costa_360x700.png", "#costa", 2, ["costa", "douglas"])
 
 
@@ -226,22 +226,20 @@ $("document").ready(function () {
     });
 
 
-    $(players.dybala.playerId).click( function() {
+    $(".players__card").on("click", function() {
 
-        players.dybala.changeContent();
+        var x = this.id;
+        Object.values(players)[x].changeContent();
+        showWindow();
         
     });
 
-    $(players.cristiano.playerId).click( function() {
+    $("#search-results").hover(function() {
 
-        players.cristiano.changeContent();
+
+        $("#search-player").blur();
+        
     });
-
-    $(players.costa.playerId).click( function() {
-
-        players.costa.changeContent();
-    });
-
 
     if (window.location.href === "http://127.0.0.1:8080/" || window.location.href === "http://127.0.0.1:8080" || window.location.href === "http://127.0.0.1:8080/#" ) {
 
@@ -283,21 +281,35 @@ $("document").ready(function () {
     var value, valueLength, valueLetter, limitName, name, fetchPlayerKeywords;
 
 
-    $(".search-bar__input").on("change keyup paste", function() {
+    $(".search__input").on("change keyup paste", function() {
         
 
-        if( $(".search-bar__input").val() === "") {
-            $(".players__row").css("display", "block");
+        if( $(".search__input").val() === "") {
+            $(".section-players").css("display", "block");
+            $(".search__results").css("display", "none");
 
         } else {
-            $(".players__row").css("display", "none");
-            value = $(".search-bar__input").val();
+            $(".section-players").css("display", "none");
+            $(".search__results").css("display", "block");
+            
+            value = $(".search__input").val();
 
+
+            // $(".players__card").remove();
+            // $(".players__card").empty();
+
+
+            
             valueLength =  value.length;
             fetchPlayersLength = Object.values(players).length;
 
+            
+
             for(var k = 0; k < fetchPlayersLength; k++) {
                 fetchPlayerKeywords = Object.values(players)[k].playerKeywords;
+
+                $("#" + Object.values(players)[k].playerIdNo).remove();
+                $("#" + Object.values(players)[k].playerIdNo).empty();
 
                 for(var c = 0; c < fetchPlayerKeywords.length; c++) {
                     valueLetter = "";
@@ -307,19 +319,43 @@ $("document").ready(function () {
 
                     for(var i = 0; i < valueLength; i++) {
                         valueLetter = valueLetter +  name.charAt(i);
+                        
                     }
                     
                     limitName = value.substr(0, valueLength);
 
 
                     if (valueLetter === limitName) {
-                        console.log(Object.values(players)[k].playerName);
+                        console.log(Object.values(players)[k]);
 
-                        $("#serach-results").text(Object.values(players)[k].playerName)
+                        $("#players-box").append("<div class='players__card players__card--result' id='" + Object.values(players)[k].playerIdNo + "'></div>");
+                        $("#" + Object.values(players)[k].playerIdNo).append("<p class='players__caption'>"+ Object.values(players)[k].playerName + "</p>");
+                        $("#" + Object.values(players)[k].playerIdNo).append("<img class='players__img' src=' " + Object.values(players)[k].playerImage + "' alt=''>");
+
+                        // Object.values(players)[k].changeContent();
+
+                        // $("#" + Object.values(players)[k].playerIdNo).click(function() {
+                        //     showWindow();
+                        // });
+
+                        $("#" + Object.values(players)[k].playerIdNo).on("click", function() {
+
+                            var fetchPlayerID = this.id;
+                            Object.values(players)[fetchPlayerID].changeContent();
+                            showWindow();
+                            console.log(fetchPlayerID);
+                        });
+
+
+                    } else {
+                        
                     }
+
+                    
                 }
             }
         }
+        
 
 
     });

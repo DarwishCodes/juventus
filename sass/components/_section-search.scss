@@ -1,4 +1,4 @@
-.search-bar {
+.search {
     margin-left: 7.7%;
     display: block;
 
@@ -24,6 +24,10 @@
             color: rgba($color-secondry-dark, 1);
         }
 
+    }
+
+    &__results {
+        display: none;
     }
 
 }

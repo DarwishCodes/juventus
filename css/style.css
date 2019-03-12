@@ -333,10 +333,10 @@ html {
 .hide-pop-up {
   display: none; }
 
-.search-bar {
+.search {
   margin-left: 7.7%;
   display: block; }
-  .search-bar__input {
+  .search__input {
     background-color: #292929;
     outline: none;
     border: 1px solid rgba(250, 213, 176, 0.5);
@@ -347,11 +347,13 @@ html {
     font-size: 1.6rem;
     transition: all 0.5s;
     width: 20%; }
-    .search-bar__input:focus {
+    .search__input:focus {
       border: 1px solid rgba(250, 213, 176, 0.8);
       width: 50%;
       background-color: rgba(255, 255, 255, 0.8);
       color: black; }
+  .search__results {
+    display: none; }
 
 .players {
   font-size: 1.2rem;
@@ -554,4 +556,7 @@ html {
   display: none; }
 
 .section-players {
+  padding: 15rem 0 5rem 0; }
+
+.section-search {
   padding: 15rem 0 5rem 0; }
