@@ -45,9 +45,10 @@ var classDOM = {
 }
 
 
-var PlayerCard = function(playerName, playerDate, palayerAge, playerHeight, playerPosition, playerNumber, playerJoined, playerGoals, playerImage, playerId, playerIdNo, playerKeywords) {
+var PlayerCard = function(playerName, playerFirstName, playerDate, palayerAge, playerHeight, playerPosition, playerNumber, playerJoined, playerGoals, playerImage, playerId, playerIdNo, playerKeywords) {
 
     this.playerName = playerName;
+    this.playerFirstName = playerFirstName;
     this.playerDate = playerDate;
     this.palayerAge = palayerAge;
     this.playerHeight = playerHeight;
@@ -57,7 +58,7 @@ var PlayerCard = function(playerName, playerDate, palayerAge, playerHeight, play
     this.playerGoals = playerGoals;
     this.playerImage = playerImage;
     this.playerId = playerId;
-    this.playerIdNo = playerIdNo;
+    this.playerIdNo = id++;
 
 
     this.playerKeywords = playerKeywords;
@@ -80,21 +81,70 @@ var PlayerCard = function(playerName, playerDate, palayerAge, playerHeight, play
 
 };
 
+var getPlayerImg1 = {
+    cristiano: "img/players-position-1/forwardes/RONALDO_501x752.png",
+    dybala: "img/players-position-1/forwardes/Dybala_501x752.png",
+    costa: "img/players-position-1/forwardes/Costa_501x752.png"
+}
 
 var players = {
 
-    cristiano: new PlayerCard("Cristiano Ronaldo", "February 5, 1985", "(age 34)", "1.87 m", "Forward", "7", "2018", "56", "img/players-position-2/forwardes/RONALDO_360x700.png", "#cristiano", 0, ["cristiano", "ronaldo"]),
-    dybala: new PlayerCard("Paulo Dybala", "November 15, 1993", "(age 25)", "1.77 m", "Forward", "10", "2015", "16", "img/players-position-2/forwardes/Dybala_360x700.png", "#dybala", 1, ["dybala", "paulo"]),
-    costa: new PlayerCard("Douglas Costa", "September 14, 1990", "(age 28)", "1.72 m", "Forward", "11", "2018", "1", "img/players-position-2/forwardes/Costa_360x700.png", "#costa", 2, ["costa", "douglas"])
+    cristiano: new PlayerCard("Cristiano Ronaldo","Cristiano", "February 5, 1985", "(age 34)", "1.87 m", "Forward", "7", "2018", "56", getPlayerImg1.cristiano, "#cristiano", id = 0, ["cristiano", "ronaldo"]),
+    dybala: new PlayerCard("Paulo Dybala","Dybala", "November 15, 1993", "(age 25)", "1.77 m", "Forward", "10", "2015", "16", getPlayerImg1.dybala, "#dybala", id, ["dybala", "paulo"]),
+    costa: new PlayerCard("Douglas Costa","Costa", "September 14, 1990", "(age 28)", "1.72 m", "Forward", "11", "2018", "1", getPlayerImg1.costa, "#costa", id, ["costa", "douglas"])
 
 
 };
 
 
+var y;
+var addPlayerPosition = function(position) {
 
-// SEARCH ENGINE KEYWORDS >> VERY IMPORTANT
+    $("#" + position).append("<div class='players__card' id='" + Object.values(players)[y].playerIdNo + "'></div>");
+    $("#" + Object.values(players)[y].playerIdNo).append("<p class='players__caption'>"+ Object.values(players)[y].playerFirstName + "</p>");
+    $("#" + Object.values(players)[y].playerIdNo).append("<img class='players__img' src=' " + Object.values(players)[y].playerImage + "' alt=''>");
+
+}
+
+var addPlayersToDOM = function() {
+
+    for (y = 0; y < Object.values(players).length; y++) {
+        
+
+        if(Object.values(players)[y].playerPosition === "Forward") {
+
+            addPlayerPosition("forward-container");
+            
+        } else if(Object.values(players)[y].playerPosition === "Midfielder") {
+
+            addPlayerPosition("midfielder-container");
+
+        } else if(Object.values(players)[y].playerPosition === "Defender") {
+
+            addPlayerPosition("defender-container");
+
+        } else if(Object.values(players)[y].playerPosition === "Goalkeeper") {
+
+            addPlayerPosition("goalkeeper-container");
+        }
+        
+    }
+}
 
 
+// Add Event Listners
+
+var initpPlayersCard = function() {
+
+    $(".players__card").on("click", function() {
+
+        var x = this.id;
+        Object.values(players)[x].changeContent();
+        showWindow();
+        
+    });
+
+}
 
 var showHideInfoBox = function(value) {
 
@@ -113,7 +163,6 @@ var addClassInfoBox = function() {
 
     }
 
-
 }
 
 var removeClassInfoBox = function() {
@@ -123,7 +172,6 @@ var removeClassInfoBox = function() {
         $(infobox + "-" + i).removeClass(classDOM.classFadeToTop + "-" + i);
 
     }
-
 
 }
 
@@ -177,10 +225,26 @@ var closeWindow = function() {
 
 }
 
+var unfocusSearch = function() {
 
+    $("#forward-container").mouseover(function() {
+
+        $("#search-player").blur();
+        
+    });
+
+    $("#search-results").mouseover(function() {
+
+        $("#search-player").blur();
+        
+    });
+}
 
 
 $("document").ready(function () {
+
+    addPlayersToDOM();
+    initpPlayersCard();
 
     $(cardSelect).click(showWindow);
     $(popupCloseSelect).click(closeWindow);
@@ -225,21 +289,6 @@ $("document").ready(function () {
 
     });
 
-
-    $(".players__card").on("click", function() {
-
-        var x = this.id;
-        Object.values(players)[x].changeContent();
-        showWindow();
-        
-    });
-
-    $("#search-results").hover(function() {
-
-
-        $("#search-player").blur();
-        
-    });
 
     if (window.location.href === "http://127.0.0.1:8080/" || window.location.href === "http://127.0.0.1:8080" || window.location.href === "http://127.0.0.1:8080/#" ) {
 
@@ -287,6 +336,9 @@ $("document").ready(function () {
         if( $(".search__input").val() === "") {
             $(".section-players").css("display", "block");
             $(".search__results").css("display", "none");
+            $(".players__card").remove();
+            addPlayersToDOM();
+            initpPlayersCard();
 
         } else {
             $(".section-players").css("display", "none");
@@ -303,7 +355,7 @@ $("document").ready(function () {
             valueLength =  value.length;
             fetchPlayersLength = Object.values(players).length;
 
-            
+            var numberOfSearchedPlayers = 0;
 
             for(var k = 0; k < fetchPlayersLength; k++) {
                 fetchPlayerKeywords = Object.values(players)[k].playerKeywords;
@@ -329,7 +381,7 @@ $("document").ready(function () {
                         console.log(Object.values(players)[k]);
 
                         $("#players-box").append("<div class='players__card players__card--result' id='" + Object.values(players)[k].playerIdNo + "'></div>");
-                        $("#" + Object.values(players)[k].playerIdNo).append("<p class='players__caption'>"+ Object.values(players)[k].playerName + "</p>");
+                        $("#" + Object.values(players)[k].playerIdNo).append("<p class='players__caption'>"+ Object.values(players)[k].playerFirstName + "</p>");
                         $("#" + Object.values(players)[k].playerIdNo).append("<img class='players__img' src=' " + Object.values(players)[k].playerImage + "' alt=''>");
 
                         // Object.values(players)[k].changeContent();
@@ -346,6 +398,10 @@ $("document").ready(function () {
                             console.log(fetchPlayerID);
                         });
 
+                        numberOfSearchedPlayers++;
+
+                        $("#results-comment").text("found " + numberOfSearchedPlayers  +" player");
+
 
                     } else {
                         
@@ -356,7 +412,7 @@ $("document").ready(function () {
             }
         }
         
-
+        unfocusSearch();
 
     });
 
