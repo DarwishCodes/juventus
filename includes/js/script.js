@@ -400,12 +400,14 @@ $("document").ready(function () {
 
                         numberOfSearchedPlayers++;
 
+                        $("#results-null").empty();
                         $("#results-comment").text("found " + numberOfSearchedPlayers  +" player");
 
-
-                    } else {
-                        
+                    } else if(numberOfSearchedPlayers === 0) {
+                        $("#results-comment").empty();
+                        $("#results-null").text("Your search - " + limitName  +" - did not match any players.");
                     }
+
 
                     
                 }
