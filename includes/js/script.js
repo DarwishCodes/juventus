@@ -81,17 +81,40 @@ var PlayerCard = function(playerName, playerFirstName, playerDate, palayerAge, p
 
 };
 
+
+// ALSO USED IN ORDERING THE PLAYERS CARDS
 var getPlayerImg1 = {
     cristiano: "img/players-position-1/forwardes/RONALDO_501x752.png",
     dybala: "img/players-position-1/forwardes/Dybala_501x752.png",
-    costa: "img/players-position-1/forwardes/Costa_501x752.png"
+    costa: "img/players-position-1/forwardes/Costa_501x752.png",
+    bernardeschi: "img/players-position-1/forwardes/Bernardeschi_501x752.png",
+    mandzukic: "img/players-position-1/forwardes/MANDZUKIC_501x752.png",
+    cuadrado: "img/players-position-1/forwardes/Cuadrado_501x752.png",
+    kean: "img/players-position-1/forwardes/KEAN_501x752.png",
+    bentancur: "img/players-position-1/midfielders/BENTANCUR_501x752.png",
+    khedira: "img/players-position-1/midfielders/KHEDIRA_501x752.png",
+    can: "img/players-position-1/midfielders/EmreCan_501x752.png",
 }
 
 var players = {
 
-    cristiano: new PlayerCard("Cristiano Ronaldo","Cristiano", "February 5, 1985", "(age 34)", "1.87 m", "Forward", "7", "2018", "56", getPlayerImg1.cristiano, "#cristiano", id = 0, ["cristiano", "ronaldo"]),
-    dybala: new PlayerCard("Paulo Dybala","Dybala", "November 15, 1993", "(age 25)", "1.77 m", "Forward", "10", "2015", "16", getPlayerImg1.dybala, "#dybala", id, ["dybala", "paulo"]),
-    costa: new PlayerCard("Douglas Costa","Costa", "September 14, 1990", "(age 28)", "1.72 m", "Forward", "11", "2018", "1", getPlayerImg1.costa, "#costa", id, ["costa", "douglas"])
+    //FORWARDERS
+    cristiano: new PlayerCard("Cristiano Ronaldo","Cristiano", "February 5, 1985", "(age 34)", "1.87 m", "Forward", "7", "2018", "56", getPlayerImg1.cristiano, "#cristiano", id = 0, ["cristiano", "ronaldo", "cristiano ronaldo"]),
+    dybala: new PlayerCard("Paulo Dybala","Dybala", "November 15, 1993", "(age 25)", "1.77 m", "Forward", "10", "2015", "16", getPlayerImg1.dybala, "#dybala", id, ["dybala", "paulo", "paulo dybala"]),
+    costa: new PlayerCard("Douglas Costa","Costa", "September 14, 1990", "(age 28)", "1.72 m", "Forward", "11", "2018", "1", getPlayerImg1.costa, "#costa", id, ["costa", "douglas", "douglas costa"]),
+    bernardeschi: new PlayerCard("Federico Bernardeschi","Bernardeschi", "February 16, 1994", "(age 25)", "1.85 m", "Forward", "33", "2017", "6", getPlayerImg1.bernardeschi, "#bernardeschi", id, ["federico", "bernardeschi", "federico bernardeschi"]),
+    mandzukic: new PlayerCard("Mario Mandžukić","Mandzukic", "May 26, 1988", "(age 32)", "1.90 m", "Forward", "17", "2015", "30", getPlayerImg1.mandzukic, "#mandzukic", id, ["mario", "mandzukic", "mario mandzukic"]),
+    cuadrado: new PlayerCard("Juan Cuadrado","Cuadrado", "May 21, 1986", "(age 30)", "1.76 m", "Forward", "17", "2015", "5", getPlayerImg1.cuadrado, "#cuadrado", id, ["juan", "cuadrado", "juan cuadrado"]),
+    kean: new PlayerCard("Moise Kean","Kean", "June 25, 1997", "(age 18)", "1.82 m", "Forward", "18", "2015", "4", getPlayerImg1.kean, "#kean", id, ["moise", "kean", "moise kean"]),
+
+    // MIDFIELDERS
+    bentancur: new PlayerCard("Rodrigo Bentancur","Bentancur", "June 25, 1997", "(age 21)", "1.82 m", "Midfielder", "30", "2015", "2", getPlayerImg1.bentancur, "#bentancur", id, ["rodrigo", "bentancur", "rodrigo bentancur"]),
+    khedira: new PlayerCard("Sami Khedira","Khedira", "April 4, 1987", "(age 31)", "1.89 m", "Midfielder", "6", "2015", "21", getPlayerImg1.khedira, "#khedira", id, ["sami", "khedira", "sami khedira"]),
+
+    can: new PlayerCard("Emre Can","Can", "April 4, 1987", "(age 25)", "1.84 m", "Midfielder", "23", "2015", "4", getPlayerImg1.can, "#can", id, ["emere", "can", "emere can"]),
+
+
+
 
 
 };
@@ -327,7 +350,7 @@ $("document").ready(function () {
 
     });
 
-    var value, valueLength, valueLetter, limitName, name, fetchPlayerKeywords;
+    var value, valueLength, valueLetter, limitName, limitKeyword, name, fetchPlayerKeywords;
 
 
     $(".search__input").on("change keyup paste", function() {
@@ -345,10 +368,11 @@ $("document").ready(function () {
             $(".search__results").css("display", "block");
             
             value = $(".search__input").val();
+            value = value.toLowerCase();
 
 
-            // $(".players__card").remove();
-            // $(".players__card").empty();
+            $(".players__card").remove();
+
 
 
             
@@ -403,13 +427,21 @@ $("document").ready(function () {
                         $("#results-null").empty();
                         $("#results-comment").text("found " + numberOfSearchedPlayers  +" player");
 
+                        limitFirstKeyword = Object.values(players)[k].playerKeywords[0].substr(0, valueLength);
+                        limitSecondKeyword = Object.values(players)[k].playerKeywords[1].substr(0, valueLength);
+                        limitThirdKeyword = Object.values(players)[k].playerKeywords[2].substr(0, valueLength);
+                        if(limitFirstKeyword ===  limitSecondKeyword) {
+                            break;
+                        } else if(limitFirstKeyword === limitThirdKeyword) {
+                            break;
+                        } else if(limitSecondKeyword === limitThirdKeyword) {
+                            break;
+                        }
+
                     } else if(numberOfSearchedPlayers === 0) {
                         $("#results-comment").empty();
                         $("#results-null").text("Your search - " + limitName  +" - did not match any players.");
                     }
-
-
-                    
                 }
             }
         }
