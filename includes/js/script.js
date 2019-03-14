@@ -41,7 +41,9 @@ var classDOM = {
     classMoveHeaderLogoUp: 'move-logo-header-top',
     classMoveHeaderLogoDown: 'move-logo-header-bottom',
     classMoveDrawerLogoUp: 'move-logo-drawer-top',
-    classMoveDrawerLogoDown: 'move-logo-drawer-bottom'
+    classMoveDrawerLogoDown: 'move-logo-drawer-bottom',
+    classRemoveHeaderShadow: 'remove-shadow-header',
+    classAddHeaderShadow: 'add-shadow-header'
 }
 
 
@@ -319,6 +321,8 @@ $("document").ready(function () {
     
     }
 
+    $(headerSelect).toggleClass(classDOM.classAddHeaderShadow);
+
     var scrolled;
     var currentScroll;
     var prevScroll;
@@ -347,6 +351,19 @@ $("document").ready(function () {
         }
 
         prevScroll = window.pageYOffset;
+
+        if(currentScroll === 0) {
+            setTimeout(function() {
+                $("#header").removeClass(classDOM.classMoveHeaderLogoUp);
+                $("#header").removeClass(classDOM.classMoveHeaderLogoDown);
+                $(headerSelect).toggleClass(classDOM.classRemoveHeaderShadow);
+
+            }, 300)
+
+        } else {
+            $(headerSelect).removeClass(classDOM.classRemoveHeaderShadow);
+            $(headerSelect).toggleClass(classDOM.classAddHeaderShadow);
+        }
 
     });
 

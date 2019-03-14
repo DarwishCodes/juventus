@@ -84,6 +84,26 @@
   100% {
     transform: translateY(0rem); } }
 
+@keyframes removeShadow {
+  0% {
+    box-shadow: 0rem 1rem 3rem rgba(0, 0, 0, 0.2); }
+  100% {
+    box-shadow: 0rem 1rem 3rem rgba(0, 0, 0, 0); } }
+
+@keyframes addShadow {
+  0% {
+    box-shadow: 0rem 1rem 3rem rgba(0, 0, 0, 0.2); }
+  100% {
+    box-shadow: 0rem 1rem 3rem rgba(0, 0, 0, 0); } }
+
+.add-shadow-header {
+  animation: addShadow 0.3s ease;
+  animation-fill-mode: forwards; }
+
+.remove-shadow-header {
+  animation: removeShadow 0.5s ease;
+  animation-fill-mode: forwards; }
+
 .move-logo-header-top {
   animation: swapToTop1 0.5s ease;
   animation-fill-mode: forwards; }
@@ -441,7 +461,7 @@ html {
   padding-top: 1rem;
   height: 8rem;
   width: 100%;
-  background-color: #141414;
+  background-color: #292929;
   box-shadow: 0rem 1rem 3rem rgba(0, 0, 0, 0.2);
   z-index: 2000; }
   .header__logo {
