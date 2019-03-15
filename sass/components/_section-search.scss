@@ -3,11 +3,15 @@
     display: block;
 
 
+    &__input-wraper {
+        position: relative;
+    }
+
     &__input {
         background-color: $color-secondry;
         outline: none;
         border: 1px solid rgba($color-primary-light, 0.5);
-        padding: 1rem 3rem;
+        padding: 1rem 4rem;
         color: $color-white;
         font-family: inherit;
         font-weight: $font-weight-medium;
@@ -23,6 +27,23 @@
             background-color: rgba($color-white, 0.8);
             color: rgba($color-secondry-dark, 1);
         }
+
+        &:focus ~ .search__icon {
+            color: $color-secondry-light;
+
+        }
+
+        
+
+    }
+
+    &__icon {
+        position: absolute;
+        top: 20%;
+        left: 0;
+        margin-left: 1rem;
+        font-size: 2.2rem;
+        color: $color-primary;
 
     }
 

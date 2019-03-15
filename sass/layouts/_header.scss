@@ -7,7 +7,7 @@
     height: 8rem;
     width: 100%;
     background-color: $color-secondry;
-    box-shadow: 0rem 1rem 3rem rgba($color-dark-1, 0.2);
+    box-shadow: 0rem 0.1rem 3rem rgba($color-secondry-dark, 0.4);
     z-index: 2000;
 
     &__logo {
@@ -74,7 +74,7 @@
             content: "";
             display: block;
             position: absolute;
-            background-color: rgba($color-secondry, 0.9);
+            background-color: rgba($color-secondry-dark, 0.2);
             opacity: 0;
             transform: scale(1.2);
             border-radius: 25px;

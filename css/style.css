@@ -86,15 +86,15 @@
 
 @keyframes removeShadow {
   0% {
-    box-shadow: 0rem 1rem 3rem rgba(0, 0, 0, 0.2); }
+    box-shadow: 0rem 0.1rem 3rem rgba(0, 0, 0, 0.4); }
   100% {
-    box-shadow: 0rem 1rem 3rem rgba(0, 0, 0, 0); } }
+    box-shadow: 0rem 0.1rem 3rem rgba(0, 0, 0, 0); } }
 
 @keyframes addShadow {
   0% {
-    box-shadow: 0rem 1rem 3rem rgba(0, 0, 0, 0.2); }
+    box-shadow: 0rem 0.1rem 3rem rgba(0, 0, 0, 0.4); }
   100% {
-    box-shadow: 0rem 1rem 3rem rgba(0, 0, 0, 0); } }
+    box-shadow: 0rem 0.1rem 3rem rgba(0, 0, 0, 0); } }
 
 .add-shadow-header {
   animation: addShadow 0.3s ease;
@@ -356,11 +356,13 @@ html {
 .search {
   margin-left: 7.7%;
   display: block; }
+  .search__input-wraper {
+    position: relative; }
   .search__input {
     background-color: #292929;
     outline: none;
     border: 1px solid rgba(250, 213, 176, 0.5);
-    padding: 1rem 3rem;
+    padding: 1rem 4rem;
     color: #fff;
     font-family: inherit;
     font-weight: 700;
@@ -372,6 +374,15 @@ html {
       width: 50%;
       background-color: rgba(255, 255, 255, 0.8);
       color: black; }
+    .search__input:focus ~ .search__icon {
+      color: #515151; }
+  .search__icon {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    margin-left: 1rem;
+    font-size: 2.2rem;
+    color: #C6A480; }
   .search__results {
     display: none; }
 
@@ -388,7 +399,7 @@ html {
       filter: blur(2px) saturate(0); }
   .players__card {
     position: relative;
-    float: left;
+    display: inline-block;
     border-radius: 23%;
     width: 17rem;
     margin-left: 1rem;
@@ -462,7 +473,7 @@ html {
   height: 8rem;
   width: 100%;
   background-color: #292929;
-  box-shadow: 0rem 1rem 3rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0rem 0.1rem 3rem rgba(0, 0, 0, 0.4);
   z-index: 2000; }
   .header__logo {
     position: fixed;
@@ -509,7 +520,7 @@ html {
       content: "";
       display: block;
       position: absolute;
-      background-color: rgba(41, 41, 41, 0.9);
+      background-color: rgba(0, 0, 0, 0.2);
       opacity: 0;
       transform: scale(1.2);
       border-radius: 25px;

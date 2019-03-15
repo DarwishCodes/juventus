@@ -96,11 +96,25 @@ var getPlayerImg1 = {
     bentancur: "img/players-position-1/midfielders/BENTANCUR_501x752.png",
     khedira: "img/players-position-1/midfielders/KHEDIRA_501x752.png",
     can: "img/players-position-1/midfielders/EmreCan_501x752.png",
+    matuidi: "img/players-position-1/midfielders/Matuidi_501x752.png",
+    pjanic: "img/players-position-1/midfielders/PJANIC_501x752.png",
+    chiellini: "img/players-position-1/defenders/Chiellini_501x752.png",
+    bonucci: "img/players-position-1/defenders/Bonucci_501x752.png",
+    barzagli: "img/players-position-1/defenders/Barzagli_501x752.png",
+    caceres: "img/players-position-1/defenders/Caceres_501x752.png",
+    sandro: "img/players-position-1/defenders/SANDRO_501x752.png",
+    cancelo: "img/players-position-1/defenders/Cancelo_501x752.png",
+    desciglio: "img/players-position-1/defenders/DeSciglio_501x752.png",
+    spinazzola: "img/players-position-1/defenders/Spinazzola_501x752.png",
+    rugani: "img/players-position-1/defenders/RUGANI_501x752.png",
+    szczesny: "img/players-position-1/goalkeepers/SZCZESNY_501x752.png",
+    perin: "img/players-position-1/goalkeepers/Perin_501x752.png",
+    pinsoglio: "img/players-position-1/goalkeepers/PINSOGLIO_501x752.png"
 }
 
 var players = {
 
-    //FORWARDERS
+    // FORWARDERS
     cristiano: new PlayerCard("Cristiano Ronaldo","Cristiano", "February 5, 1985", "(age 34)", "1.87 m", "Forward", "7", "2018", "56", getPlayerImg1.cristiano, "#cristiano", id = 0, ["cristiano", "ronaldo", "cristiano ronaldo"]),
     dybala: new PlayerCard("Paulo Dybala","Dybala", "November 15, 1993", "(age 25)", "1.77 m", "Forward", "10", "2015", "16", getPlayerImg1.dybala, "#dybala", id, ["dybala", "paulo", "paulo dybala"]),
     costa: new PlayerCard("Douglas Costa","Costa", "September 14, 1990", "(age 28)", "1.72 m", "Forward", "11", "2018", "1", getPlayerImg1.costa, "#costa", id, ["costa", "douglas", "douglas costa"]),
@@ -112,13 +126,24 @@ var players = {
     // MIDFIELDERS
     bentancur: new PlayerCard("Rodrigo Bentancur","Bentancur", "June 25, 1997", "(age 21)", "1.82 m", "Midfielder", "30", "2015", "2", getPlayerImg1.bentancur, "#bentancur", id, ["rodrigo", "bentancur", "rodrigo bentancur"]),
     khedira: new PlayerCard("Sami Khedira","Khedira", "April 4, 1987", "(age 31)", "1.89 m", "Midfielder", "6", "2015", "21", getPlayerImg1.khedira, "#khedira", id, ["sami", "khedira", "sami khedira"]),
-
     can: new PlayerCard("Emre Can","Can", "April 4, 1987", "(age 25)", "1.84 m", "Midfielder", "23", "2015", "4", getPlayerImg1.can, "#can", id, ["emere", "can", "emere can"]),
+    matuidi: new PlayerCard("Blaise Matuidi","Matuidi", "April 4, 1987", "(age 31)", "1.8 m", "Midfielder", "14", "2017", "6", getPlayerImg1.matuidi, "#matuidi", id, ["blaise", "matuidi", "blaise matuidi"]),
+    pjanic: new PlayerCard("Miralem Pjanic","Pjanic", "April 2, 1990", "(age 28)", "1.8 m", "Midfielder", "5", "2015", "18", getPlayerImg1.pjanic, "#pjanic", id, ["miralem", "pjanic", "miralem pjanic"]),
 
+    // DEFENDERS
+    chiellini: new PlayerCard("Giorgio Chiellini","Chiellini", "April 2, 1990", "(age 34)", "1.8 m", "Defender", "5", "2005", "18", getPlayerImg1.chiellini, "#chiellini", id, ["giorgio", "chiellini", "giorgio chiellini"]),
+    bonucci: new PlayerCard("Leonardo Bonucci","Bonucci", "May 1, 1987", "(age 31)", "1.9 m", "Defender", "19", "2010. 2018", "15", getPlayerImg1.bonucci, "#bonucci", id, ["leonardo", "bonucci", "leonardo bonucci"]),
+    barzagli: new PlayerCard("Andrea Barzagli","Barzagli", "May 8, 1981", "(age 37)", "1.87 m", "Defender", "15", "2011", "2", getPlayerImg1.barzagli, "#barzagli", id, ["andrea", "barzagli", "andrea barzagli"]),
+    caceres: new PlayerCard("Martín Cáceres","Cáceres", "May 8, 1981", "(age 31)", "1.78 m", "Defender", "4", "2009. 2012. 2019", "3", getPlayerImg1.caceres, "#caceres", id, ["martin", "caceres", "martin caceres"]),
+    sandro: new PlayerCard("Alex Sandro","Alex Sandro", "January 26, 1991", "(age 28)", "1.8 m", "Defender", "12", "2015", "9", getPlayerImg1.sandro, "#sandro", id, ["alex", "sandro", "alex sandro"]),
+    desciglio: new PlayerCard("Mattia De Sciglio","De Sciglio", "October 20, 1992", "(age 26)", "1.82 m", "Defender", "2", "2018", "Zero", getPlayerImg1.desciglio, "#desciglio", id, ["joao", "desciglio", "joao desciglio"]),
+    spinazzola: new PlayerCard("Leonardo Spinazzola","Spinazzola", "March 25, 1993", "(age 25)", "1.86 m", "Defender", "37", "2018", "Zero", getPlayerImg1.spinazzola, "#spinazzola", id, ["leonardo", "spinazzola", "leonardo spinazzola"]),
+    rugani: new PlayerCard("Daniele Rugani","Rugani", "July 29, 1994", "(age 24)", "1.86 m", "Defender", "24", "2013", "6", getPlayerImg1.rugani, "#rugani", id, ["leonardo", "rugani", "leonardo rugani"]),
 
-
-
-
+    // GOALKEEPRS
+    szczesny: new PlayerCard("Wojciech Szczęsny","Szczęsny", "April 18, 1990", "(age 28)", "1.95 m", "Goalkeeper", "1", "2013", "Zero", getPlayerImg1.szczesny, "#szczesny", id, ["leonardo", "szczesny", "leonardo szczesny"]),
+    perin: new PlayerCard("Mattia Perin","Perin", "November 10, 1992", "(age 26)", "1.88 m", "Goalkeeper", "22", "2018", "Zero", getPlayerImg1.perin, "#perin", id, ["mattia", "perin", "mattia perin"]),
+    pinsoglio: new PlayerCard("Carlo Pinsoglio","Pinsoglio", "March 16, 1990", "(age 28)", "1.94 m", "Goalkeeper", "22", "2000", "Zero", getPlayerImg1.pinsoglio, "#pinsoglio", id, ["carlo", "pinsoglio", "carlo pinsoglio"])
 };
 
 
