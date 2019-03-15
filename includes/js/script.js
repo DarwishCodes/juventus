@@ -227,6 +227,14 @@ var removeClassInfoBox = function() {
 
 var showWindow = function() {
 
+
+    if($(headerSelect).hasClass(classDOM.classMoveHeaderLogoUp)) {
+
+        $(headerSelect).toggleClass(classDOM.classMoveHeaderLogoDown);
+
+    }
+
+
     $(popupSelect).toggleClass(classDOM.classShowPopUp);
     $(popupSelect).toggleClass(classDOM.classFadeIn);
 
@@ -252,6 +260,16 @@ var showWindow = function() {
 
 
 var closeWindow = function() {
+
+
+    if($(headerSelect).hasClass(classDOM.classMoveHeaderLogoDown)) {
+
+        
+        $(headerSelect).removeClass(classDOM.classMoveHeaderLogoDown);
+
+
+    }
+
 
     $(popupSelect).removeClass(classDOM.classFadeIn);
     $(popupSelect).toggleClass(classDOM.classFadeOut);
