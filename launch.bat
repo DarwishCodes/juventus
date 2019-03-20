@@ -1,16 +1,37 @@
 @echo off
-title Prepare Enviroment for Web Development
+for %%I in (.) do set CurrDirName=%%~nxI
+title %CurrDirName%
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 Setlocal EnableDelayedExpansion
-:::::::::::::::::::::::::::::::::::::::::::f:::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:menu
+cls
+echo(
+echo [1] Install/Update Packages
+echo [2] Launch Live Server
+echo [9] Build project
+echo(
+echo(
+echo(
+echo [0] Exit
+
+set /p env=Type 0 or 1 or 2 then hit enter: || set env="0"
+if /I %env%==1 goto packages
+if /I %env%==2 goto start
+if /I %env%==9 goto build
+if /I %env%==0 goto exit
+
+goto menu
 
 
-
-if exist "package-lock.json" goto start
-
-
-call npm init
+:packages
+cls
+echo(
+echo(
+title Installing ....
 call npm install node-sass --save-dev
+call npm install live-server --save-dev
 call npm install autoprefixer --save-dev
 call npm install concat --save-dev
 call npm install npm-run-all --save-dev
@@ -40,9 +61,10 @@ call npm install postcss-cli --save-dev
     )
 call npm install
 
+
 :main
 cls
-echo NPM moduls has been installed!
+echo NPM moduls has been installed/updated!
 echo(
 set /p env=Would you like to start your WEB server live? (no): || set env="0"
 if /I %env%==yes goto start
@@ -59,6 +81,38 @@ call npm run start
 pause
 exit
 
+:build
+cls
+call npm run build:css
+
+RMDIR /S /Q "src"
+MKDIR "src"
+MKDIR "src\css"
+MKDIR "src\img"
+if exist "includes\js" MKDIR "src\includes"
+
+xcopy "css\style.css" "src\css"
+xcopy "img" "src\img" /E
+
+xcopy /s "includes" "src\includes"
+xcopy "index.html" "src\"
+
+:local
+cls
+echo Files has been compiled!
+echo(
+set /p env=Would you like to open your compiled website? (yes): || set env="0"
+if /I %env%==yes goto open-local
+if /I %env%==y goto open-local
+if /I %env%==no goto exit
+if /I %env%==n goto exit
+
+goto open-local
+
+:open-local
+
+start file:///%cd%/src/index.html
+goto exit
 
 :exit
 exit
