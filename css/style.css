@@ -211,7 +211,8 @@ html {
   font-weight: 400;
   color: #C6A480;
   font-size: 10px;
-  background-color: #292929; }
+  background-color: #292929;
+  overflow: overlay; }
 
 .heading-primary {
   color: #fff;
@@ -357,7 +358,8 @@ html {
   margin-left: 7.7%;
   display: block; }
   .search__input-wraper {
-    position: relative; }
+    position: relative;
+    bottom: 15px; }
   .search__input {
     background-color: #292929;
     outline: none;
@@ -376,15 +378,26 @@ html {
       color: black; }
     .search__input:focus ~ .search__icon {
       color: #515151; }
+  .search__input--header:focus {
+    width: 20%; }
+  .search__input--header:focus ~ .search__icon {
+    color: #515151; }
   .search__icon {
     position: absolute;
     top: 20%;
     left: 0;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
     font-size: 2.2rem;
     color: #C6A480; }
+    .search__icon--header {
+      margin-top: 0.5rem;
+      cursor: pointer; }
   .search__results {
     display: none; }
+  .search__header {
+    margin-bottom: 15px;
+    display: none;
+    opacity: 0; }
 
 .players {
   font-size: 1.2rem;
@@ -486,7 +499,7 @@ html {
   top: 0;
   left: 0;
   display: block;
-  width: 20rem;
+  width: 12rem;
   transform: translateX(-20rem);
   height: 100vh;
   background-color: #292929;
@@ -535,7 +548,8 @@ html {
     left: 50%;
     z-index: 2; }
   .drawer__link-icon {
-    margin-right: 15px; }
+    display: block;
+    font-size: 2.4rem; }
   .drawer__logo-box {
     text-align: center;
     margin-top: 2rem; }
@@ -551,10 +565,11 @@ html {
     font-family: inherit; }
   .navigation__link {
     display: inline-block;
-    padding: 2.5rem 2rem;
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.4);
-    border-top: 0.5px solid rgba(0, 0, 0, 0.4);
+    text-align: center;
+    padding: 1.5rem 2rem;
     text-decoration: none;
+    font-family: inherit;
+    font-weight: 600;
     width: 100%;
     color: #fff;
     background-color: #292929;
@@ -566,8 +581,7 @@ html {
       background-color: rgba(255, 255, 255, 0.59);
       color: #292929; }
   .navigation__link--marked {
-    background-color: rgba(255, 255, 255, 0.59);
-    color: #292929; }
+    color: #C6A480; }
 
 .shadow-window {
   display: none;

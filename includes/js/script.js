@@ -7,6 +7,7 @@ var imgaeSelect = "#pop-up-image";
 var headingName = "#heading-name";
 var headerSelect = "#header";
 var bodySelect = "#body";
+var DOMSelect = "html"
 var infoboxBorn = "#infobox-born";
 var infoboxHeight = "#infobox-height";
 var infoboxPosition = "#infobox-position";
@@ -324,7 +325,7 @@ $("document").ready(function () {
         $(drawer).toggleClass(classDOM.classMoveDrawer);
         $(headerLogo).toggleClass(classDOM.classMoveHeaderLogoUp);
         $(drawerLogo).toggleClass(classDOM.classMoveDrawerLogoDown);
-        $(bodySelect).toggleClass(classDOM.classDisableScroll);
+        $(DOMSelect).toggleClass(classDOM.classDisableScroll);
 
     });
 
@@ -344,7 +345,7 @@ $("document").ready(function () {
             $(shadedWindow).removeClass(classDOM.classFadeInFast);
             $(shadedWindow).removeClass(classDOM.classFadeOutFast);
             $(shadedWindow).removeClass(classDOM.classShowShadedWindow);
-            $(bodySelect).removeClass(classDOM.classDisableScroll);
+            $(DOMSelect).removeClass(classDOM.classDisableScroll);
             
         }, 200);
 
@@ -370,6 +371,7 @@ $("document").ready(function () {
     var currentScroll;
     var prevScroll;
     scrolled = false;
+    scrolled2 = false;
 
     prevScroll = window.pageYOffset;
 
@@ -384,34 +386,52 @@ $("document").ready(function () {
             scrolled = true;
             $("#header").toggleClass(classDOM.classMoveHeaderLogoUp);
             $("#header").removeClass(classDOM.classMoveHeaderLogoDown);
-        } 
 
-        if (currentScroll < prevScroll && scrolled === true) {
+
+            $(".search__header").toggleClass(classDOM.classFadeOut);
+            
+            setTimeout(function() {
+                $(".search__header").removeClass(classDOM.classFadeOut);
+                $(".search__header").removeClass(classDOM.classFadeIn);
+                $(".search__header").css("display", "none");
+            }, 300)
+            
+        } else if(currentScroll < prevScroll && scrolled === true) {
 
             scrolled = false;
             $("#header").toggleClass(classDOM.classMoveHeaderLogoDown);
             $("#header").removeClass(classDOM.classMoveHeaderLogoUp);
+
+
+                $(".search__header").css("display", "block");
+                $(".search__header").toggleClass(classDOM.classFadeIn);
+
         }
 
-        prevScroll = window.pageYOffset;
 
         if(currentScroll === 0) {
+            $(".search__header").toggleClass(classDOM.classFadeOut);
             setTimeout(function() {
                 $("#header").removeClass(classDOM.classMoveHeaderLogoUp);
                 $("#header").removeClass(classDOM.classMoveHeaderLogoDown);
                 $(headerSelect).toggleClass(classDOM.classRemoveHeaderShadow);
-
+                $(".search__header").removeClass(classDOM.classFadeOut);
+                $(".search__header").removeClass(classDOM.classFadeIn);
+                $(".search__header").css("display", "none");
             }, 300)
 
-        } else {
-            $(headerSelect).removeClass(classDOM.classRemoveHeaderShadow);
-            $(headerSelect).toggleClass(classDOM.classAddHeaderShadow);
+
         }
+
+        prevScroll = window.pageYOffset;
 
     });
 
     var value, valueLength, valueLetter, limitName, limitKeyword, name, fetchPlayerKeywords;
 
+    $("#search-icon").click(function() {
+        $("#search-player").focus();
+    });
 
     $(".search__input").on("change keyup paste", function() {
         

@@ -24,7 +24,7 @@
     top: 0;
     left: 0;
     display: block;
-    width: 20rem;
+    width: 12rem;
     transform: translateX(-20rem);
     height: 100vh;
     background-color: rgba($color-secondry, 1);
@@ -97,7 +97,8 @@
     }
 
     &__link-icon {
-        margin-right: 15px;
+        display: block;
+        font-size: 2.4rem;
     }
 
     &__logo-box {
@@ -129,10 +130,11 @@
 
     &__link {
         display: inline-block;
-        padding: 2.5rem 2rem;
-        border-bottom: 0.5px solid rgba($color-secondry-dark, 0.4);
-        border-top: 0.5px solid rgba($color-secondry-dark, 0.4);
+        text-align: center;
+        padding: 1.5rem 2rem;
         text-decoration: none;
+        font-family: inherit;
+        font-weight: 600;
         width: 100%;
         color: $color-white;
         background-color: rgba($color-secondry, 1);
@@ -153,7 +155,6 @@
     }
     
     &__link--marked {
-        background-color: rgba($color-white, .59);
-        color: $color-secondry;
+        color: $color-primary;
     }
 }
