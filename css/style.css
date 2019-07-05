@@ -399,17 +399,43 @@ html {
     display: none;
     opacity: 0; }
 
+.section-players {
+  position: relative; }
+
 .players {
   font-size: 1.2rem;
   font-weight: 400; }
   .players__row {
-    background-color: rgba(20, 20, 20, 0.5); }
+    background-color: rgba(20, 20, 20, 0.5);
+    overflow-x: hidden; }
   .players__box {
     display: inline-block;
-    margin-left: 21%;
-    margin-right: 17%; }
+    margin-left: 8%;
+    padding-right: 20rem; }
     .players__box:hover .players__card:not(:hover) {
       filter: blur(2px) saturate(0); }
+  .players__arrow {
+    position: absolute;
+    width: 15rem;
+    height: 27.3rem;
+    top: 31.8%;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    z-index: 800; }
+    .players__arrow:hover {
+      opacity: 0.3; }
+    .players__arrow--left {
+      left: 0%;
+      background-image: linear-gradient(to right, rgba(198, 164, 128, 0.7), rgba(198, 164, 128, 0.3), rgba(0, 0, 1, 0), rgba(0, 0, 1, 0)); }
+    .players__arrow--right {
+      right: 0%;
+      background-image: linear-gradient(to left, rgba(198, 164, 128, 0.7), rgba(198, 164, 128, 0.3), rgba(0, 0, 1, 0), rgba(0, 0, 1, 0)); }
+  .players__container {
+    display: flex;
+    transition: all 0.3s linear; }
+  .players__position {
+    position: absolute; }
   .players__card {
     position: relative;
     display: inline-block;

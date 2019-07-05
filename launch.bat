@@ -10,6 +10,7 @@ cls
 echo(
 echo [1] Install/Update Packages
 echo [2] Launch Live Server
+echo [3] Create new project
 echo [9] Build project
 echo(
 echo(
@@ -17,18 +18,25 @@ echo(
 echo [0] Exit
 
 set /p env=Type 0 or 1 or 2 then hit enter: || set env="0"
-if /I %env%==1 goto packages
+if /I %env%==1 goto update
 if /I %env%==2 goto start
+if /I %env%==3 goto create
 if /I %env%==9 goto build
 if /I %env%==0 goto exit
 
 goto menu
 
 
-:packages
+:create
 cls
 echo(
 echo(
+call npm init
+:update
+cls
+echo(
+echo(
+
 title Installing ....
 call npm install node-sass --save-dev
 call npm install live-server --save-dev
@@ -44,10 +52,9 @@ call npm install postcss-cli --save-dev
 	"devserver": "live-server", ^
 	"start": "npm-run-all --parallel devserver watch:sass", ^
 	"compile:sass": "node-sass sass/main.scss css/style.comp.css", ^
-	"concat:css": "concat -o css/style.concat.css css/icon-font.css css/style.comp.css", ^
-	"prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" css/style.concat.css -o css/style.prefix.css", ^
+	"prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" css/style.comp.css -o css/style.prefix.css", ^
 	"compress:css": "node-sass css/style.prefix.css css/style.css --output-style compressed", ^
-	"build:css": "npm-run-all compile:sass concat:css prefix:css compress:css"
+	"build:css": "npm-run-all compile:sass prefix:css compress:css"
 
     set "textFile=package.json"
 
@@ -90,13 +97,15 @@ MKDIR "src"
 MKDIR "src\css"
 MKDIR "src\img"
 if exist "includes\js" MKDIR "src\includes"
+if exist "fonts" MKDIR "src\css\fonts"
 
 xcopy "css\style.css" "src\css"
 xcopy "img" "src\img" /E
 
 xcopy /s "includes" "src\includes"
+xcopy /s "fonts" "src\css\fonts"
 xcopy "index.html" "src\"
-
+pause
 :local
 cls
 echo Files has been compiled!

@@ -318,6 +318,11 @@ $("document").ready(function () {
     $(cardSelect).click(showWindow);
     $(popupCloseSelect).click(closeWindow);
 
+    document.addEventListener("keypress", function(e) {
+        
+        console.log(e);
+    })
+
     $(menuIcon).click( function() {
 
         $(shadedWindow).toggleClass(classDOM.classShowShadedWindow);
@@ -357,6 +362,52 @@ $("document").ready(function () {
         }, 500);
 
     });
+
+    //////////////////////////////
+    /// PlAYERS SLIDER //////////
+    ////////////////////////////
+    var scrollLength = 30;
+    var slideLeft;
+    var slideRight;
+
+    document.querySelector('#arr-left-forw').addEventListener('mouseenter', function(e){
+        
+        slideLeft = setInterval(function(){
+            if(scrollLength > 0) {
+                scrollLength -= 30;
+            }
+            document.querySelector('#forward-container').style = 'transform: translateX(-' + scrollLength +'px)';
+            if(scrollLength > 0) {
+                scrollLength -= 30;
+            }
+            console.log('left ' +scrollLength)
+        }, 300);
+    });
+
+    document.querySelector('#arr-left-forw').addEventListener('mouseleave', function(e){
+        clearInterval(slideLeft);
+    });
+
+    document.querySelector('#arr-right-forw').addEventListener('mouseenter', function(e){
+        slideRight = setInterval(function(){
+            if(scrollLength < calcSlideWidth('#slide-forw')) {
+                scrollLength += 30;
+            }
+            document.querySelector('#forward-container').style = 'transform: translateX(-' + scrollLength +'px)';
+            if(scrollLength < calcSlideWidth('#slide-forw')) {
+                scrollLength += 30;
+            }
+            console.log('right '+ scrollLength)
+        }, 300);
+    });
+
+    document.querySelector('#arr-right-forw').addEventListener('mouseleave', function(e){
+        clearInterval(slideRight);
+    });
+
+    var calcSlideWidth = function(slideId) {
+        return document.querySelector(slideId).scrollWidth - document.querySelector(slideId).clientWidth;
+    }
 
 
     if (window.location.href === "http://127.0.0.1:8080/" || window.location.href === "http://127.0.0.1:8080" || window.location.href === "http://127.0.0.1:8080/#" ) {
@@ -431,6 +482,7 @@ $("document").ready(function () {
 
     $("#search-icon").click(function() {
         $("#search-player").focus();
+        window.scrollTo(0, 0);
     });
 
     $(".search__input").on("change keyup paste", function() {
@@ -530,6 +582,8 @@ $("document").ready(function () {
 
     });
 
+
+
     // document.addEventListener('mousemove', logKey);
     
     // function logKey(e) {
@@ -552,4 +606,3 @@ $("document").ready(function () {
 
 
 });
-
