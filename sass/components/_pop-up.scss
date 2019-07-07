@@ -41,8 +41,10 @@
     }
 
     &__img {
-        width: 200%;
-        height: auto;
+        position: fixed;
+        bottom: 0;
+        right: 16%;
+        width: 17%;
         z-index: 100;
         transform: translateX(10rem);
         opacity: 0;
@@ -50,9 +52,9 @@
     }
 
     &__close {
-        position: absolute;
-        top: 1rem;
-        right: 4rem;
+        position: fixed;
+        top: 9rem;
+        right: 5rem;
         font-size: 2rem;
         color: $color-white;
         cursor: pointer;

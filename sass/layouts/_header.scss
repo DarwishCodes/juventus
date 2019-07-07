@@ -50,7 +50,6 @@
 
             transform: scale(1.4);
             opacity: 1;
-            border-radius: 0;
 
         }
 
@@ -76,15 +75,12 @@
             position: absolute;
             background-color: rgba($color-secondry-dark, 0.2);
             opacity: 0;
-            transform: scale(1.2);
-            border-radius: 25px;
+            transform: scale(0.3);
             height: 2.9rem;
             width: 2.9rem;
             z-index: 1;
-            transition: all 0.5s;
-
+            transition: opacity 0.1s ease, transform 0.3s ease;
         }
-        
     }
 
     &__icon {
