@@ -9,12 +9,11 @@
     background-color: $color-secondry;
     box-shadow: 0rem 0.1rem 3rem rgba($color-secondry-dark, 0.4);
     z-index: 2000;
+    transition: all 0.3s ease;
 
     &__logo {
-        position: fixed;
-        top: 1rem;
-        left: 49%;
         display: block;
+        float: right;
     }
 
 }
@@ -39,6 +38,7 @@
     }
 
     &__icon-box {
+        display: flex;
         font-size: 2.3rem;
         margin-left: 4rem;
         position: relative;

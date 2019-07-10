@@ -228,6 +228,7 @@ var removeClassInfoBox = function() {
 
 var showWindow = function() {
 
+    document.querySelector('#header').style = 'top: 0';
 
     if($(headerSelect).hasClass(classDOM.classMoveHeaderLogoUp)) {
 
@@ -261,7 +262,8 @@ var showWindow = function() {
 
 
 var closeWindow = function() {
-
+    
+    document.querySelector('#header').style = 'top: -8rem';
 
     if($(headerSelect).hasClass(classDOM.classMoveHeaderLogoDown)) {
 
@@ -481,67 +483,81 @@ $("document").ready(function () {
     
     }
 
-    $(headerSelect).toggleClass(classDOM.classAddHeaderShadow);
+    var posScrlOld;
+    window.addEventListener('scroll', function(e){
+        var posScrlY = [window.pageYOffset, 0]
+        
+        if(posScrlY[0] > posScrlOld) {
+            document.querySelector('#header').style = 'top: -8rem';
+        } else if (posScrlY[0] < posScrlOld) {
+            document.querySelector('#header').style = 'top: 0';
+        }
 
-    var scrolled;
-    var currentScroll;
-    var prevScroll;
-    scrolled = false;
-    scrolled2 = false;
+        posScrlOld = posScrlY[0];
+        
+    });
 
-    prevScroll = window.pageYOffset;
+    // $(headerSelect).toggleClass(classDOM.classAddHeaderShadow);
+
+    // var scrolled;
+    // var currentScroll;
+    // var prevScroll;
+    // scrolled = false;
+    // scrolled2 = false;
+
+    // prevScroll = window.pageYOffset;
 
     
-    $(window).scroll(function() {
+    // $(window).scroll(function() {
 
-        currentScroll = window.pageYOffset;
-
-
-        if (currentScroll > prevScroll && scrolled === false) {
-
-            scrolled = true;
-            $("#header").toggleClass(classDOM.classMoveHeaderLogoUp);
-            $("#header").removeClass(classDOM.classMoveHeaderLogoDown);
+    //     currentScroll = window.pageYOffset;
 
 
-            $(".search__header").toggleClass(classDOM.classFadeOut);
+    //     if (currentScroll > prevScroll && scrolled === false) {
+
+    //         scrolled = true;
+    //         $("#header").toggleClass(classDOM.classMoveHeaderLogoUp);
+    //         $("#header").removeClass(classDOM.classMoveHeaderLogoDown);
+
+
+    //         $(".search__header").toggleClass(classDOM.classFadeOut);
             
-            setTimeout(function() {
-                $(".search__header").removeClass(classDOM.classFadeOut);
-                $(".search__header").removeClass(classDOM.classFadeIn);
-                $(".search__header").css("display", "none");
-            }, 300)
+    //         setTimeout(function() {
+    //             $(".search__header").removeClass(classDOM.classFadeOut);
+    //             $(".search__header").removeClass(classDOM.classFadeIn);
+    //             $(".search__header").css("display", "none");
+    //         }, 300)
             
-        } else if(currentScroll < prevScroll && scrolled === true) {
+    //     } else if(currentScroll < prevScroll && scrolled === true) {
 
-            scrolled = false;
-            $("#header").toggleClass(classDOM.classMoveHeaderLogoDown);
-            $("#header").removeClass(classDOM.classMoveHeaderLogoUp);
-
-
-                $(".search__header").css("display", "block");
-                $(".search__header").toggleClass(classDOM.classFadeIn);
-
-        }
+    //         scrolled = false;
+    //         $("#header").toggleClass(classDOM.classMoveHeaderLogoDown);
+    //         $("#header").removeClass(classDOM.classMoveHeaderLogoUp);
 
 
-        if(currentScroll === 0) {
-            $(".search__header").toggleClass(classDOM.classFadeOut);
-            setTimeout(function() {
-                $("#header").removeClass(classDOM.classMoveHeaderLogoUp);
-                $("#header").removeClass(classDOM.classMoveHeaderLogoDown);
-                $(headerSelect).toggleClass(classDOM.classRemoveHeaderShadow);
-                $(".search__header").removeClass(classDOM.classFadeOut);
-                $(".search__header").removeClass(classDOM.classFadeIn);
-                $(".search__header").css("display", "none");
-            }, 300)
+    //             $(".search__header").css("display", "block");
+    //             $(".search__header").toggleClass(classDOM.classFadeIn);
+
+    //     }
 
 
-        }
+    //     if(currentScroll === 0) {
+    //         $(".search__header").toggleClass(classDOM.classFadeOut);
+    //         setTimeout(function() {
+    //             $("#header").removeClass(classDOM.classMoveHeaderLogoUp);
+    //             $("#header").removeClass(classDOM.classMoveHeaderLogoDown);
+    //             $(headerSelect).toggleClass(classDOM.classRemoveHeaderShadow);
+    //             $(".search__header").removeClass(classDOM.classFadeOut);
+    //             $(".search__header").removeClass(classDOM.classFadeIn);
+    //             $(".search__header").css("display", "none");
+    //         }, 300)
 
-        prevScroll = window.pageYOffset;
 
-    });
+    //     }
+
+    //     prevScroll = window.pageYOffset;
+
+    // });
 
     var value, valueLength, valueLetter, limitName, limitKeyword, name, fetchPlayerKeywords;
 

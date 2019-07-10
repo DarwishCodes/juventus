@@ -514,12 +514,11 @@ html {
   width: 100%;
   background-color: #292929;
   box-shadow: 0rem 0.1rem 3rem rgba(0, 0, 0, 0.4);
-  z-index: 2000; }
+  z-index: 2000;
+  transition: all 0.3s ease; }
   .header__logo {
-    position: fixed;
-    top: 1rem;
-    left: 49%;
-    display: block; }
+    display: block;
+    float: right; }
 
 .drawer {
   position: fixed;
@@ -536,6 +535,7 @@ html {
   .drawer__content {
     text-align: left; }
   .drawer__icon-box {
+    display: flex;
     font-size: 2.3rem;
     margin-left: 4rem;
     position: relative;
