@@ -421,7 +421,6 @@ html {
     width: 15rem;
     height: 29rem;
     top: 31.8%;
-    cursor: pointer;
     opacity: 0;
     transition: all 0.3s ease-out;
     z-index: 800; }

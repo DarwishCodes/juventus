@@ -384,6 +384,9 @@ $("document").ready(function () {
             sldLeft = setInterval(function(){
             if(scrlLength > 0) {
                 scrlLength -= 30;
+                document.querySelector('#arr-left-' + position).style.opacity = null;
+            } else if (calcSlideWidth('#slide-' + position) === 0) {
+                document.querySelector('#arr-left-' + position).style.opacity = '0';
             }
             document.querySelector('#' + position + '-container').style = 'transform: translateX(-' + scrlLength + 'px)';
             if(scrlLength > 0) {
@@ -401,18 +404,26 @@ $("document").ready(function () {
             sldRight = setInterval(function(){
                 if(scrlLength < calcSlideWidth('#slide-' + position)) {
                     scrlLength += 30;
+                    document.querySelector('#arr-right-' + position).style.opacity = null;
+                } else if (calcSlideWidth('#slide-' + position) === 0) {
+                    document.querySelector('#arr-right-' + position).style.opacity = '0';
                 }
                 document.querySelector('#' + position + '-container').style = 'transform: translateX(-' + scrlLength + 'px)';
                 if(scrlLength < calcSlideWidth('#slide-'+ position)) {
                     scrlLength += 30;
                 }
-                console.log('right '+ scrlLength)
+                console.log('right '+ scrlLength);
+
+
             }, 300);
         });
 
         document.querySelector('#arr-right-' + position).addEventListener('mouseleave', function(e){
             clearInterval(sldRight);
         });
+        
+
+
     }
     
     // Creating slider by passing the ID of players container
