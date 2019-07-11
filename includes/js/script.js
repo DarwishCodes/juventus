@@ -378,7 +378,6 @@ $("document").ready(function () {
         }
 
         initSlider(this.sliderVars.scrollLength,this.sliderVars.slideLeft,this.sliderVars.slideRight,this.sliderVars.position);
-
     }
 
     var initSlider = function(scrlLength,sldLeft,sldRight,position) {
@@ -423,9 +422,6 @@ $("document").ready(function () {
         document.querySelector('#arr-right-' + position).addEventListener('mouseleave', function(e){
             clearInterval(sldRight);
         });
-        
-
-
     }
     
     // Creating slider by passing the ID of players container
@@ -484,13 +480,18 @@ $("document").ready(function () {
     }
 
     var posScrlOld;
+    
     window.addEventListener('scroll', function(e){
         var posScrlY = [window.pageYOffset, 0]
         
         if(posScrlY[0] > posScrlOld) {
             document.querySelector('#header').style = 'top: -8rem';
         } else if (posScrlY[0] < posScrlOld) {
-            document.querySelector('#header').style = 'top: 0';
+            document.querySelector('#header').style = 'top: 0;box-shadow: 0rem 0.1rem 3rem rgba(0,0,0, 0.3)';
+        }
+        
+        if(posScrlY[0] === 0) {
+            document.querySelector('#header').style = 'box-shadow: 0rem 0.1rem 3rem rgba(0,0,0, 0)';
         }
 
         posScrlOld = posScrlY[0];

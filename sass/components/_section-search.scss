@@ -31,13 +31,8 @@
 
         &:focus ~ .search__icon {
             color: $color-secondry-light;
-
         }
-
-        
-
     }
-
 
     &__input--header {
 
@@ -45,13 +40,10 @@
             // box-shadow: 0rem 0.2rem 2rem rgba($color-secondry-dark, 0.8);
             width: 20%;
         }
-
         
         &:focus ~ .search__icon {
             color: $color-secondry-light;
-
         }
-
     }
 
     &__icon {
@@ -66,7 +58,6 @@
             margin-top: 0.5rem;
             cursor: pointer;
         }
-
     }
 
     &__results {
@@ -74,10 +65,10 @@
     }
 
     &__header {
-        margin-bottom: 15px;
-        display: none;
-        opacity: 0;
-        
+        padding-left: 9rem;
+        padding-top: 2.7rem;
+        display: block;
+        opacity: 1;
+        float: left;
     }
-
 }

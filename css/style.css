@@ -397,9 +397,11 @@ html {
   .search__results {
     display: none; }
   .search__header {
-    margin-bottom: 15px;
-    display: none;
-    opacity: 0; }
+    padding-left: 9rem;
+    padding-top: 2.7rem;
+    display: block;
+    opacity: 1;
+    float: left; }
 
 .section-players {
   position: relative; }
@@ -517,8 +519,7 @@ html {
   z-index: 2000;
   transition: all 0.3s ease; }
   .header__logo {
-    display: block;
-    float: right; }
+    display: block; }
 
 .drawer {
   position: fixed;
@@ -535,7 +536,7 @@ html {
   .drawer__content {
     text-align: left; }
   .drawer__icon-box {
-    display: flex;
+    display: block;
     font-size: 2.3rem;
     margin-left: 4rem;
     position: relative;
