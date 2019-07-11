@@ -270,6 +270,49 @@ html {
   height: 100%;
   overflow: hidden; }
 
+.btn-anim, .btn-anim:link, .btn-anim:visited {
+  display: inline-block;
+  position: fixed;
+  right: 4rem;
+  bottom: 4rem;
+  background-color: #515151;
+  color: #141414;
+  font-size: 1.2rem;
+  padding: 2rem 0;
+  text-decoration: none;
+  width: 4.1rem;
+  overflow: hidden;
+  transform: scale(0);
+  z-index: 2500;
+  transition: all 0.7s ease; }
+
+.btn-anim::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 3rem 2rem;
+  background-color: #C6A480;
+  z-index: 2100;
+  transition: all 0.5s ease; }
+
+.btn-anim span {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  text-align: left;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.1s ease; }
+
+.btn-anim:hover span {
+  opacity: 1; }
+
+.btn-anim:hover {
+  width: 20rem; }
+
 .infobox {
   background-color: rgba(81, 81, 81, 0.5);
   padding: 2rem 3rem;
