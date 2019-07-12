@@ -305,7 +305,7 @@ html {
   text-align: left;
   width: 100%;
   opacity: 0;
-  transition: all 0.1s ease; }
+  transition: all 0.3s ease; }
 
 .btn-anim:hover span {
   opacity: 1; }

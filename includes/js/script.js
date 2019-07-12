@@ -498,6 +498,39 @@ $("document").ready(function () {
         
     });
 
+    //////////////////////////////
+    /// ANIMATE BUTTON //////////
+    ////////////////////////////
+
+    var startBtnAnim = function() {
+        var selBtnAnim = document.querySelector('.btn-anim');
+        var selBtnAnimText = document.querySelector('#btn-anim-text');
+        
+        selBtnAnim.style = "transform: scale(1)";
+        setTimeout(function(){
+            selBtnAnim.style = "transform: scale(1); width: 20rem";
+        }, 1000);
+        
+        setTimeout(function(){
+            selBtnAnim.style = "transform: scale(1); width: 20rem";
+        }, 4000);
+        setTimeout(function() {
+            selBtnAnimText.style = "opacity: 1";
+        }, 1700);
+    
+        setTimeout(function() {
+            selBtnAnimText.style = "opacity: 0";
+        }, 6100);
+    
+        setTimeout(function() {
+            selBtnAnim.style = "transform: scale(1);";
+            selBtnAnimText.style = null;
+        }, 7000);
+    }
+
+    setTimeout(startBtnAnim, 20000)
+    
+
     // $(headerSelect).toggleClass(classDOM.classAddHeaderShadow);
 
     // var scrolled;
