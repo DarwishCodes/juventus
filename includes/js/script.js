@@ -152,33 +152,21 @@ var y;
 var addPlayerPosition = function(position) {
 
     $("#" + position).append("<div class='players__card' id='" + Object.values(players)[y].playerIdNo + "'></div>");
-    $("#" + Object.values(players)[y].playerIdNo).append("<p class='players__caption'>"+ Object.values(players)[y].playerFirstName + "</p>");
-    $("#" + Object.values(players)[y].playerIdNo).append("<img class='players__img' src=' " + Object.values(players)[y].playerImage + "' alt=''>");
-
+    $("#" + Object.values(players)[y].playerIdNo).append("<p class='players__caption'>"+ Object.values(players)[y].playerFirstName + "</p><span class='players__check-box'><i class='icon ion-ios-checkmark players__check-box-icon'></i></span><img class='players__img' src=' " + Object.values(players)[y].playerImage + "' alt=''>");
 }
 
 var addPlayersToDOM = function() {
 
     for (y = 0; y < Object.values(players).length; y++) {
-        
-
         if(Object.values(players)[y].playerPosition === "Forward") {
-
             addPlayerPosition("forward-container");
-            
         } else if(Object.values(players)[y].playerPosition === "Midfielder") {
-
             addPlayerPosition("midfielder-container");
-
         } else if(Object.values(players)[y].playerPosition === "Defender") {
-
             addPlayerPosition("defender-container");
-
         } else if(Object.values(players)[y].playerPosition === "Goalkeeper") {
-
             addPlayerPosition("goalkeeper-container");
         }
-        
     }
 }
 
@@ -186,97 +174,63 @@ var addPlayersToDOM = function() {
 // Add Event Listners
 
 var initpPlayersCard = function() {
-
-    $(".players__card").on("click", function() {
-
-        var x = this.id;
+    $(".players__img").on("click", function() {
+        var x = $(this).closest('div').attr('id');
         Object.values(players)[x].changeContent();
         showWindow();
-        
     });
 
 }
 
 var showHideInfoBox = function(value) {
-
     for(var i = 1; i <= 8; i++) {
-
         $(infobox + "-" + i).css("opacity", value);
-
     }
 }
 
 var addClassInfoBox = function() {
-
     for(var i = 1; i <= 8; i++) {
-
         $(infobox + "-" + i).toggleClass(classDOM.classFadeToTop + "-" + i);
-
     }
-
 }
 
 var removeClassInfoBox = function() {
-
     for(var i = 1; i <= 8; i++) {
-
         $(infobox + "-" + i).removeClass(classDOM.classFadeToTop + "-" + i);
-
     }
-
 }
 
 var showWindow = function() {
-
     document.querySelector('#header').style = 'top: 0';
-
     if($(headerSelect).hasClass(classDOM.classMoveHeaderLogoUp)) {
-
         $(headerSelect).toggleClass(classDOM.classMoveHeaderLogoDown);
-
     }
-
 
     $(popupSelect).toggleClass(classDOM.classShowPopUp);
     $(popupSelect).toggleClass(classDOM.classFadeIn);
-
     $(bodySelect).toggleClass(classDOM.classDisableScroll);
-
     addClassInfoBox();
 
     setTimeout( function () {
-
         showHideInfoBox("1");
         removeClassInfoBox();
-
     }, 2000);
-
 
     $(popupSelect).css("opacity", "1");
     $(imgaeSelect).toggleClass(classDOM.classFullShadow);
-
     $(headingName).toggleClass(classDOM.classFillToRight);
-
-
 }
 
 
 var closeWindow = function() {
-    
     document.querySelector('#header').style = 'top: -8rem';
 
     if($(headerSelect).hasClass(classDOM.classMoveHeaderLogoDown)) {
-
-        
         $(headerSelect).removeClass(classDOM.classMoveHeaderLogoDown);
-
-
     }
-
 
     $(popupSelect).removeClass(classDOM.classFadeIn);
     $(popupSelect).toggleClass(classDOM.classFadeOut);
-
     $(bodySelect).removeClass(classDOM.classDisableScroll);
     
     setTimeout( function () {
@@ -288,32 +242,23 @@ var closeWindow = function() {
         $(imgaeSelect).removeClass(classDOM.classAnimateImage);
         $(headingName).removeClass(classDOM.classFillToRight);
         $(imgaeSelect).removeClass(classDOM.classFullShadow);
-
-
         showHideInfoBox("0");
         removeClassInfoBox();
     }, 400);
-
 }
 
 var unfocusSearch = function() {
-
     $("#forward-container").mouseover(function() {
-
         $("#search-player").blur();
-        
     });
 
     $("#search-results").mouseover(function() {
-
         $("#search-player").blur();
-        
     });
 }
 
 
 $("document").ready(function () {
-
     addPlayersToDOM();
     initpPlayersCard();
 
@@ -321,7 +266,6 @@ $("document").ready(function () {
     $(popupCloseSelect).click(closeWindow);
 
     document.addEventListener("keypress", function(e) {
-        
         console.log(e);
     })
 
@@ -528,7 +472,7 @@ $("document").ready(function () {
         }, 7000);
     }
 
-    setTimeout(startBtnAnim, 20000)
+    setTimeout(startBtnAnim, 1000)
     
 
     // $(headerSelect).toggleClass(classDOM.classAddHeaderShadow);
@@ -601,28 +545,20 @@ $("document").ready(function () {
     });
 
     $(".search__input").on("change keyup paste", function() {
-        
-
         if( $(".search__input").val() === "") {
             $(".section-players").css("display", "block");
             $(".search__results").css("display", "none");
             $(".players__card").remove();
             addPlayersToDOM();
             initpPlayersCard();
-
         } else {
             $(".section-players").css("display", "none");
             $(".search__results").css("display", "block");
             
             value = $(".search__input").val();
             value = value.toLowerCase();
-
-
             $(".players__card").remove();
 
-
-
-            
             valueLength =  value.length;
             fetchPlayersLength = Object.values(players).length;
 
@@ -652,8 +588,8 @@ $("document").ready(function () {
                         console.log(Object.values(players)[k]);
 
                         $("#players-box").append("<div class='players__card players__card--result' id='" + Object.values(players)[k].playerIdNo + "'></div>");
-                        $("#" + Object.values(players)[k].playerIdNo).append("<p class='players__caption'>"+ Object.values(players)[k].playerFirstName + "</p>");
-                        $("#" + Object.values(players)[k].playerIdNo).append("<img class='players__img' src=' " + Object.values(players)[k].playerImage + "' alt=''>");
+                        $("#" + Object.values(players)[k].playerIdNo).append("<p class='players__caption'>"+ Object.values(players)[k].playerFirstName + "qwe</p><img class='players__img' src=' " + Object.values(players)[k].playerImage + "' alt=''>");
+                        // $("#" + Object.values(players)[k].playerIdNo).append("");
 
                         // Object.values(players)[k].changeContent();
 

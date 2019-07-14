@@ -101,7 +101,6 @@
 
         &:hover {
             width: 30rem;
-            cursor: pointer;
         }
 
         &:hover .players__img {
@@ -113,6 +112,9 @@
             left: 50%;
         }
 
+        &:hover .players__check-box {
+            opacity: 1;
+        }
     }
 
     &__caption {
@@ -124,6 +126,32 @@
         opacity: 0;
         transition: all 1s;
     }
+    
+    &__check-box {
+        position: absolute;
+        top: 10%;
+        right: 5%;
+        width: 3rem;
+        height: 3rem;
+        border: 2px solid rgba($color-primary, 1);
+        opacity: 0;
+        cursor: pointer;
+        transition: opacity 0.5s ease, transform 0.2s ease-out;
+
+
+        &:active {
+            transform: scale(0.8);
+        }
+    }
+
+    &__check-box-icon {
+        position: absolute;
+        top: -59%;
+        left: 14%;
+        color: $color-white;
+        font-size: 5rem;
+        opacity: 0;
+    }
 
     &__img {
         display: inline-block;
@@ -132,6 +160,7 @@
         margin-right: 1rem;
         margin-top: 26px;
         margin-left: 1rem;
+        cursor: pointer;
         transform: translateY(2px);
         transition: all 0.9s cubic-bezier(.1,.47,.39,.83);
         z-index: 5;

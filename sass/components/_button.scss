@@ -18,22 +18,21 @@
         transition: all 0.7s ease;
     }
 
-    &::before {
-        content: "";
+    &__before {
         display: inline-block;
         position: absolute;
         top: 0;
-        left: 0;
+        right: 0;
         padding: 3rem 2rem;
         background-color: $color-primary;
         z-index: 2100;
         transition: all 0.5s ease;
     }
     
-    span {
+    &__text {
         display: block;
         position: absolute;
-        left: 50%;
+        left: 27%;
         top: 35%;
         text-align: left;
         width: 100%;
@@ -41,7 +40,15 @@
         transition: all 0.3s ease;
     }
 
-    &:hover span {
+    &__icon {
+        display: block;
+        position: absolute;
+        top: 10%;
+        left: 27%;
+        font-size: 2rem;
+    }
+
+    &:hover &__text {
         opacity: 1;
     }
 
