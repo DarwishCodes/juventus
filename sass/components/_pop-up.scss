@@ -26,7 +26,11 @@
         opacity: 1;
         display: inline-block;
         cursor: default;
+    }
 
+    &__heading--right {
+        float: right;
+        transition: background-size 0.8s ease 1.6s;
     }
 
     &__left {

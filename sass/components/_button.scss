@@ -57,3 +57,17 @@
     }
 
 }
+
+.btn {
+    &,
+    &:link,
+    &:visited {
+        display: none;
+        background-color: $color-primary-light;
+        text-align: center;
+        color: $color-black-1;
+        font-size: 1.56rem;
+        padding: 2rem 5rem;
+        text-decoration: none;
+    }
+}

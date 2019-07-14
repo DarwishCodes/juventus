@@ -286,32 +286,47 @@ html {
   z-index: 2500;
   transition: all 0.7s ease; }
 
-.btn-anim::before {
-  content: "";
+.btn-anim__before {
   display: inline-block;
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   padding: 3rem 2rem;
   background-color: #C6A480;
   z-index: 2100;
   transition: all 0.5s ease; }
 
-.btn-anim span {
+.btn-anim__text {
   display: block;
   position: absolute;
-  left: 50%;
+  left: 27%;
   top: 35%;
   text-align: left;
   width: 100%;
   opacity: 0;
   transition: all 0.3s ease; }
 
-.btn-anim:hover span {
+.btn-anim__icon {
+  display: block;
+  position: absolute;
+  top: 10%;
+  left: 27%;
+  font-size: 2rem; }
+
+.btn-anim:hover .btn-anim__text {
   opacity: 1; }
 
 .btn-anim:hover {
   width: 20rem; }
+
+.btn, .btn:link, .btn:visited {
+  display: none;
+  background-color: #fad5b0;
+  text-align: center;
+  color: #141414;
+  font-size: 1.56rem;
+  padding: 2rem 5rem;
+  text-decoration: none; }
 
 .infobox {
   background-color: rgba(81, 81, 81, 0.5);
@@ -365,6 +380,9 @@ html {
     opacity: 1;
     display: inline-block;
     cursor: default; }
+  .pop-up__heading--right {
+    float: right;
+    transition: background-size 0.8s ease 1.6s; }
   .pop-up__left {
     z-index: 100; }
   .pop-up__right {
@@ -495,13 +513,14 @@ html {
     transition: all 0.5s ease-out;
     backface-visibility: hidden; }
     .players__card:hover {
-      width: 30rem;
-      cursor: pointer; }
+      width: 30rem; }
     .players__card:hover .players__img {
       transform: translateY(2px) scale(1.2); }
     .players__card:hover .players__caption {
       opacity: 1;
       left: 50%; }
+    .players__card:hover .players__check-box {
+      opacity: 1; }
   .players__caption {
     color: #C6A480;
     font-size: 1.5rem;
@@ -510,6 +529,25 @@ html {
     left: 40%;
     opacity: 0;
     transition: all 1s; }
+  .players__check-box {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid #c6a480;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.5s ease, transform 0.2s ease-out; }
+    .players__check-box:active {
+      transform: scale(0.8); }
+  .players__check-box-icon {
+    position: absolute;
+    top: -59%;
+    left: 14%;
+    color: #fff;
+    font-size: 5rem;
+    opacity: 0; }
   .players__img {
     display: inline-block;
     width: 15rem;
@@ -517,6 +555,7 @@ html {
     margin-right: 1rem;
     margin-top: 26px;
     margin-left: 1rem;
+    cursor: pointer;
     transform: translateY(2px);
     transition: all 0.9s cubic-bezier(0.1, 0.47, 0.39, 0.83);
     z-index: 5;

@@ -32,6 +32,7 @@ var classDOM = {
     classShowPopUp: 'show-pop-up',
     classAnimateImage: 'move-to-left',
     classFillToRight: 'fill-to-right',
+    classFillToLeft: 'fill-to-left',
     classFadeToTop: 'fade-to-top',
     classFullShadow: 'full-shadow',
     classDisableScroll: 'disable-scroll',
@@ -61,8 +62,8 @@ var PlayerCard = function(playerName, playerFirstName, playerDate, palayerAge, p
     this.playerGoals = playerGoals;
     this.playerImage = playerImage;
     this.playerId = playerId;
+    this.isChecked = false;
     this.playerIdNo = id++;
-
 
     this.playerKeywords = playerKeywords;
 
@@ -80,6 +81,18 @@ var PlayerCard = function(playerName, playerFirstName, playerDate, palayerAge, p
 
         // showWindow();
 
+    };
+
+    this.changeContent2 = function() {
+
+        $("#heading-name2").text(this.playerName);
+        $("#infobox2-born").text(this.playerDate);
+        $("#infobox2-age").text(this.playerAge);
+        $("#infobox2-height").text(this.playerHeight);
+        $("#infobox2-position").text(this.playerPosition);
+        $("#infobox2-number").text(this.playerNumber);
+        $("#infobox2-joined").text(this.playerJoined);
+        $("#infobox2-goals").text(this.playerGoals);
     };
 
 };
@@ -179,12 +192,15 @@ var initpPlayersCard = function() {
         Object.values(players)[x].changeContent();
         showWindow();
     });
-
 }
 
 var showHideInfoBox = function(value) {
     for(var i = 1; i <= 8; i++) {
         $(infobox + "-" + i).css("opacity", value);
+    }
+
+    for(var i = 1; i <= 8; i++) {
+        $(infobox + "2-" + i).css("opacity", value);
     }
 }
 
@@ -192,11 +208,19 @@ var addClassInfoBox = function() {
     for(var i = 1; i <= 8; i++) {
         $(infobox + "-" + i).toggleClass(classDOM.classFadeToTop + "-" + i);
     }
+
+    for(var i = 1; i <= 8; i++) {
+        $(infobox + "2-" + i).toggleClass(classDOM.classFadeToTop + "-" + i);
+    }
 }
 
 var removeClassInfoBox = function() {
     for(var i = 1; i <= 8; i++) {
         $(infobox + "-" + i).removeClass(classDOM.classFadeToTop + "-" + i);
+    }
+
+    for(var i = 1; i <= 8; i++) {
+        $(infobox + "2-" + i).removeClass(classDOM.classFadeToTop + "-" + i);
     }
 }
 
@@ -219,6 +243,7 @@ var showWindow = function() {
     $(popupSelect).css("opacity", "1");
     $(imgaeSelect).toggleClass(classDOM.classFullShadow);
     $(headingName).toggleClass(classDOM.classFillToRight);
+    $("#heading-name2").toggleClass(classDOM.classFillToRight);
 }
 
 
@@ -241,6 +266,7 @@ var closeWindow = function() {
         $(popupSelect).removeClass(classDOM.classShowPopUp);
         $(imgaeSelect).removeClass(classDOM.classAnimateImage);
         $(headingName).removeClass(classDOM.classFillToRight);
+        $("#heading-name2").removeClass(classDOM.classFillToRight);
         $(imgaeSelect).removeClass(classDOM.classFullShadow);
         showHideInfoBox("0");
         removeClassInfoBox();
@@ -536,6 +562,70 @@ $("document").ready(function () {
     //     prevScroll = window.pageYOffset;
 
     // });
+
+    ////////////////////////////////
+    /// COMPARING SYSTEM //////////
+    //////////////////////////////
+    var slctedPlyrs = [];
+
+    document.querySelector('#pop-up-right1').style = 'display: none';
+    document.querySelector('#pop-up-right2').style = 'display: none';
+    document.querySelector('#heading-name2').style = 'display: none';
+
+    document.querySelector('#btn-compare').addEventListener('click', function(){
+        Object.values(players)[slctedPlyrs[0]].changeContent();
+        Object.values(players)[slctedPlyrs[1]].changeContent2();
+        showWindow();
+    });
+
+    $(".players__check-box").on("click", function(){
+        var plyrID = $(this).closest('div').attr('id');
+
+        if(Object.values(players)[plyrID].isChecked === false && slctedPlyrs.length < 2) {
+            Object.values(players)[plyrID].isChecked = true;
+            this.querySelector('i').style = 'opacity: 1';
+            this.style = 'opacity: 1';
+            slctedPlyrs.push(plyrID);
+
+        } else if(slctedPlyrs.length <= 2 && Object.values(players)[plyrID].isChecked === true) {
+                slctedPlyrs.pop();
+                this.querySelector('i').style = 'opacity: 0';
+                this.style = null;
+                Object.values(players)[plyrID].isChecked = false;
+            }
+            
+        if(slctedPlyrs.length !== 0) {
+            document.querySelector('.header').style = 'top: -8rem';
+            
+            setTimeout(function(){
+                document.querySelector('.header').style = 'top: 0rem';
+                document.querySelector('#header-logo').style = 'display: none';
+                document.querySelector('#pop-up-image').style = 'display: none';
+                document.querySelector('#pop-up-right1').style = 'display: block';
+                document.querySelector('#pop-up-right2').style = 'display: block';
+                document.querySelector('#heading-name2').style = 'display: block';
+                document.querySelector('#btn-compare').style = 'display: inline-block';
+            }, 300)
+        } else if(slctedPlyrs.length === 0) {
+            document.querySelector('.header').style = 'top: -8rem';
+            
+            setTimeout(function(){
+                document.querySelector('.header').style = 'top: 0rem';
+                document.querySelector('#header-logo').style = 'display: block';
+                document.querySelector('#pop-up-image').style = 'display: block';
+                document.querySelector('#pop-up-right1').style = 'display: none';
+                document.querySelector('#pop-up-right2').style = 'display: none';
+                document.querySelector('#heading-name2').style = 'display: none';
+                document.querySelector('#btn-compare').style = 'display: none';
+            }, 300)
+        }
+
+        console.log(slctedPlyrs)
+    });
+
+    
+    
+    
 
     var value, valueLength, valueLetter, limitName, limitKeyword, name, fetchPlayerKeywords;
 
