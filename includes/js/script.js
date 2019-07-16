@@ -594,6 +594,19 @@ $("document").ready(function () {
                 this.style = null;
                 Object.values(players)[plyrID].isChecked = false;
             }
+
+        if(Object.values(players)[plyrID].isChecked === false && slctedPlyrs.length === 2) {
+
+            document.getElementById(slctedPlyrs[1]).querySelector('span i').style = 'opacity: 0';
+            document.getElementById(slctedPlyrs[1]).querySelector('span').style = null;
+            Object.values(players)[slctedPlyrs[1]].isChecked = false;
+            slctedPlyrs.splice(1, 1);
+
+            slctedPlyrs.push(plyrID);
+            this.querySelector('i').style = 'opacity: 1';
+            this.style = 'opacity: 1';
+            Object.values(players)[plyrID].isChecked = true;
+        }
             
         if(slctedPlyrs.length !== 0) {
             document.querySelector('.header').style = 'top: -8rem';
