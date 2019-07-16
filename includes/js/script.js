@@ -588,7 +588,8 @@ $("document").ready(function () {
             slctedPlyrs.push(plyrID);
 
         } else if(slctedPlyrs.length <= 2 && Object.values(players)[plyrID].isChecked === true) {
-                slctedPlyrs.pop();
+                var indexPos = slctedPlyrs.indexOf(plyrID);
+                slctedPlyrs.splice(indexPos, 1);
                 this.querySelector('i').style = 'opacity: 0';
                 this.style = null;
                 Object.values(players)[plyrID].isChecked = false;
